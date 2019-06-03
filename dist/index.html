@@ -5,11 +5,77 @@
 </head>
 <body>
     <header>
-        <ui5-shellbar></ui5-shellbar>
+        <ui5-shellbar id="shellbar" primary-title="Main page" secondary-title="secondary title" logo="" profile="" notification-count="99+" show-notifications="" show-product-switch="" show-co-pilot="">
+            
+               
+            
+                <!-- <ui5-shellbar-item id="disc" src="sap-icon://disconnected" text="Disconnect"></ui5-shellbar-item>
+                <ui5-shellbar-item id="call" src="sap-icon://incoming-call" text="Incoming Calls"></ui5-shellbar-item>
+             -->
+                <ui5-input slot="searchField"></ui5-input>
+            
+                <ui5-li slot="menuItems">Application 1</ui5-li>
+                <ui5-li slot="menuItems">Application 2</ui5-li>
+                <ui5-li slot="menuItems">Application 3</ui5-li>
+                <ui5-li slot="menuItems">Application 4</ui5-li>
+                <ui5-li slot="menuItems">Application 5</ui5-li>
+
+        </ui5-shellbar>
     </header>
-    <ui5-button>Hello World</ui5-button><br><br>
-    <ui5-textarea placeholder="Type some text" max-length="8" show-exceeded-text=""></ui5-textarea><br><br>
-    <ui5-datepicker style="width: 180px"></ui5-datepicker><br><br>
+    <main>
+            <ui5-title level="H2">Orders</ui5-title>
+            <ui5-tabcontainer class="full-width" show-overflow="">
+                    <ui5-tab icon="sap-icon://warning" text="Delayed" selected="">
+                        <ui5-label>Dignissimos debitis architecto temporibus doloribus reiciendis libero rem nemo, nobis quidem dolor praesentium, beatae voluptatum iste eveniet, nam voluptatem obcaecati ducimus dolore.</ui5-label>
+                    </ui5-tab>
+                    <ui5-tab icon="sap-icon://calendar" text="Due soon">
+                        <ui5-label>Possimus ipsa eos impedit aut nisi repellendus recusandae, temporibus ducimus, necessitatibus tenetur facere, minima vero fugit rem reiciendis natus ratione quia numquam?</ui5-label>
+                    </ui5-tab>
+                    <ui5-tab icon="sap-icon://activities" text="Completed">
+                        <ui5-label>Quibusdam, veniam! Architecto debitis iusto ad et, asperiores quisquam perferendis reprehenderit ipsa voluptate minus minima, perspiciatis cum. Totam harum necessitatibus numquam voluptatum.</ui5-label>
+                    </ui5-tab>
+                    <ui5-tab icon="sap-icon://list" text="All">
+                        <ui5-label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga magni facere error dicta beatae optio repudiandae vero, quidem voluptatibus perferendis eum maiores rem tempore voluptates aperiam eos enim delectus unde.</ui5-label>
+                    </ui5-tab>
+                    <ui5-tab-separator></ui5-tab-separator>
+                    <ui5-tab icon="sap-icon://activity-2" text="Summary">
+                        <ui5-label>Explicabo laboriosam ab consequuntur, qui dignissimos inventore sapiente ullam quaerat ratione libero vero, beatae laudantium! Aperiam numquam tempore, laudantium perferendis recusandae autem.</ui5-label>
+                    </ui5-tab>
+                </ui5-tabcontainer>    
+    <ui5-multi-combobox style="width: 240px">
+            <ui5-li selected="">Argentina</ui5-li>
+            <ui5-li>Bulgaria</ui5-li>
+            <ui5-li>Denmark</ui5-li>
+            <ui5-li>England</ui5-li>
+            <ui5-li>Albania</ui5-li>
+            <ui5-li>Morocco</ui5-li>
+            <ui5-li>Portugal</ui5-li>
+            <ui5-li>Germany</ui5-li>
+            <ui5-li>Philippines</ui5-li>
+            <ui5-li>Paraguay</ui5-li>
+    </ui5-multi-combobox>
+    <ui5-multi-combobox style="width: 240px">
+            <ui5-li selected="">Argentina</ui5-li>
+            <ui5-li>Bulgaria</ui5-li>
+            <ui5-li>Denmark</ui5-li>
+            <ui5-li>England</ui5-li>
+            <ui5-li>Albania</ui5-li>
+            <ui5-li>Morocco</ui5-li>
+            <ui5-li>Portugal</ui5-li>
+            <ui5-li>Germany</ui5-li>
+            <ui5-li>Philippines</ui5-li>
+            <ui5-li>Paraguay</ui5-li>
+    </ui5-multi-combobox>
+    
+    <ui5-datepicker style="width: 240px"></ui5-datepicker>
+    <ui5-datepicker style="width: 240px"></ui5-datepicker>
+    <br><br>
+    
+    </main>
+    <footer>
+            <ui5-button type="Emphasized">Save</ui5-button>
+            <ui5-button>Cancel</ui5-button><br><br>
+    </footer>
 
     <script src="/script.75da7f30.js"></script>
 </body>

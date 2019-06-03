@@ -24248,7 +24248,3258 @@ _Bootstrap.default.boot().then(_ => {
 
 var _default = ShellBar;
 exports.default = _default;
-},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/Configuration.js":"node_modules/@ui5/webcomponents-base/src/Configuration.js","@ui5/webcomponents-base/src/types/URI.js":"node_modules/@ui5/webcomponents-base/src/types/URI.js","@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/types/Function.js":"node_modules/@ui5/webcomponents-base/src/types/Function.js","@ui5/webcomponents-base/src/delegate/ResizeHandler.js":"node_modules/@ui5/webcomponents-base/src/delegate/ResizeHandler.js","@ui5/webcomponents-base/src/delegate/ItemNavigation.js":"node_modules/@ui5/webcomponents-base/src/delegate/ItemNavigation.js","@ui5/webcomponents-base/src/events/PseudoEvents.js":"node_modules/@ui5/webcomponents-base/src/events/PseudoEvents.js","./StandardListItem.js":"node_modules/@ui5/webcomponents/dist/StandardListItem.js","./List.js":"node_modules/@ui5/webcomponents/dist/List.js","./Icon.js":"node_modules/@ui5/webcomponents/dist/Icon.js","./Popover.js":"node_modules/@ui5/webcomponents/dist/Popover.js","./build/compiled/ShellBarRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/ShellBarRenderer.lit.js","./ShellBarTemplateContext.js":"node_modules/@ui5/webcomponents/dist/ShellBarTemplateContext.js","./themes/ShellBar.css.js":"node_modules/@ui5/webcomponents/dist/themes/ShellBar.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"script.js":[function(require,module,exports) {
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/Configuration.js":"node_modules/@ui5/webcomponents-base/src/Configuration.js","@ui5/webcomponents-base/src/types/URI.js":"node_modules/@ui5/webcomponents-base/src/types/URI.js","@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/types/Function.js":"node_modules/@ui5/webcomponents-base/src/types/Function.js","@ui5/webcomponents-base/src/delegate/ResizeHandler.js":"node_modules/@ui5/webcomponents-base/src/delegate/ResizeHandler.js","@ui5/webcomponents-base/src/delegate/ItemNavigation.js":"node_modules/@ui5/webcomponents-base/src/delegate/ItemNavigation.js","@ui5/webcomponents-base/src/events/PseudoEvents.js":"node_modules/@ui5/webcomponents-base/src/events/PseudoEvents.js","./StandardListItem.js":"node_modules/@ui5/webcomponents/dist/StandardListItem.js","./List.js":"node_modules/@ui5/webcomponents/dist/List.js","./Icon.js":"node_modules/@ui5/webcomponents/dist/Icon.js","./Popover.js":"node_modules/@ui5/webcomponents/dist/Popover.js","./build/compiled/ShellBarRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/ShellBarRenderer.lit.js","./ShellBarTemplateContext.js":"node_modules/@ui5/webcomponents/dist/ShellBarTemplateContext.js","./themes/ShellBar.css.js":"node_modules/@ui5/webcomponents/dist/themes/ShellBar.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents/dist/CustomListItemTemplateContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ListItemTemplateContext = _interopRequireDefault(require("./ListItemTemplateContext.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class CustomListItemTemplateContext {
+  static calculate(state) {
+    const calculatedState = _ListItemTemplateContext.default.calculate(state);
+
+    calculatedState.classes.main.sapMCustomLI = true;
+    return calculatedState;
+  }
+
+}
+
+var _default = CustomListItemTemplateContext;
+exports.default = _default;
+},{"./ListItemTemplateContext.js":"node_modules/@ui5/webcomponents/dist/ListItemTemplateContext.js"}],"node_modules/@ui5/webcomponents/dist/build/compiled/CustomListItemRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const CustomListItemLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<li 	id="${(0, _ifDefined.default)(context.ctr._id)}"	data-sap-ui="${(0, _ifDefined.default)(context.ctr._id)}"	?aria-hidden="${(0, _ifDefined.default)(context.ariaHidden)}"	tabindex="${(0, _ifDefined.default)(context.ctr._tabIndex)}"	style="${(0, _ifDefined.default)(context.styles.main)}"	class="${(0, _ifDefined.default)(context.classes.main)}">		${context.placeSelectionControlBefore ? block1(context) : undefined}<div id="${(0, _ifDefined.default)(context.ctr._id)}-content" class="${(0, _ifDefined.default)(context.classes.inner)}">			<slot></slot></div>		${context.placeSelectionControlAfter ? block5(context) : undefined}</li>`;
+};
+
+const block1 = context => {
+  return _LitRenderer.html`${context.modeSingleSelect ? block2(context) : undefined}${context.modeMultiSelect ? block3(context) : undefined}${context.modeDelete ? block4(context) : undefined}`;
+};
+
+const block2 = context => {
+  return _LitRenderer.html`<ui5-radiobutton				id="${(0, _ifDefined.default)(context.ctr._id)}-singleSelectionControl"				class="singleSelectionRadioButton"				?selected="${(0, _ifDefined.default)(context.ctr.selected)}"></ui5-radiobutton>	`;
+};
+
+const block3 = context => {
+  return _LitRenderer.html`<ui5-checkbox				id="${(0, _ifDefined.default)(context.ctr._id)}-multiSelectionControl"				class="multiSelectionCheckBox"				?checked="${(0, _ifDefined.default)(context.ctr.selected)}"></ui5-checkbox>	`;
+};
+
+const block4 = context => {
+  return _LitRenderer.html`<div class="sapMDeleteListItemButton"><ui5-button				id="${(0, _ifDefined.default)(context.ctr._id)}-deleteSelectionControl"				type="Transparent"				icon="sap-icon://decline"				@ui5-press="${(0, _ifDefined.default)(context.ctr._fnOnDelete)}"			></ui5-button></div>	`;
+};
+
+const block5 = context => {
+  return _LitRenderer.html`${context.modeSingleSelect ? block6(context) : undefined}${context.modeMultiSelect ? block7(context) : undefined}${context.modeDelete ? block8(context) : undefined}`;
+};
+
+const block6 = context => {
+  return _LitRenderer.html`<ui5-radiobutton				id="${(0, _ifDefined.default)(context.ctr._id)}-singleSelectionControl"				class="singleSelectionRadioButton"				?selected="${(0, _ifDefined.default)(context.ctr.selected)}"></ui5-radiobutton>	`;
+};
+
+const block7 = context => {
+  return _LitRenderer.html`<ui5-checkbox				id="${(0, _ifDefined.default)(context.ctr._id)}-multiSelectionControl"				class="multiSelectionCheckBox"				?checked="${(0, _ifDefined.default)(context.ctr.selected)}"></ui5-checkbox>	`;
+};
+
+const block8 = context => {
+  return _LitRenderer.html`<div class="sapMDeleteListItemButton"><ui5-button				id="${(0, _ifDefined.default)(context.ctr._id)}-deleteSelectionControl"				type="Transparent"				icon="sap-icon://decline"				@ui5-press="${(0, _ifDefined.default)(context.ctr._fnOnDelete)}"			></ui5-button></div>	`;
+};
+
+const renderMe = block0;
+CustomListItemLitRenderer.render = renderMe;
+var _default = CustomListItemLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/themes/CustomListItem.css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = ":host(ui5-li-custom) .sap-phone .sapMLIB{outline:none}:host(ui5-li-custom){display:block}ui5-li-custom{display:block}ui5-li-custom .sap-phone .sapMLIB{outline:none}.sapMLIB.sapMCustomLI{height:100%;padding:0}ui5-checkbox.multiSelectionCheckBox,ui5-radiobutton.singleSelectionRadioButton{display:flex;align-items:center}.sapMLIB.sapMCustomLI,ui5-checkbox.multiSelectionCheckBox,ui5-radiobutton.singleSelectionRadioButton{min-width:3rem}.sapUiSizeCompact .sapMLIB.sapMCustomLI,.sapUiSizeCompact ui5-checkbox.multiSelectionCheckBox,.sapUiSizeCompact ui5-radiobutton.singleSelectionRadioButton{min-width:2rem}";
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/CustomListItem.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _ListItem = _interopRequireDefault(require("./ListItem.js"));
+
+var _CustomListItemTemplateContext = _interopRequireDefault(require("./CustomListItemTemplateContext.js"));
+
+var _CustomListItemRendererLit = _interopRequireDefault(require("./build/compiled/CustomListItemRenderer.lit.js"));
+
+var _CustomListItemCss = _interopRequireDefault(require("./themes/CustomListItem.css.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Styles
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-li-custom",
+  defaultSlot: "content",
+  slots:
+  /** @lends sap.ui.webcomponents.main.CustomListItem.prototype */
+  {
+    /**
+     * Defines the content of the <code>ui5-li-custom</code>.
+     * @type {HTMLElement[]}
+     * @slot
+     * @public
+     */
+    content: {
+      type: HTMLElement,
+      multiple: true
+    }
+  },
+  properties:
+  /** @lends sap.ui.webcomponents.main.CustomListItem.prototype */
+  {}
+};
+/**
+ * @class
+ *
+ * A component to be used as custom list item within the <code>ui5-list</code>
+ * the same way as the standard <code>ui5-li</code>.
+ *
+ * The <code>ui5-li-custom</code> accepts arbitrary HTML content to allow full customization.
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.CustomListItem
+ * @extends ListItem
+ * @tagname ui5-li-custom
+ * @public
+ */
+
+class CustomListItem extends _ListItem.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _CustomListItemRendererLit.default;
+  }
+
+  static get calculateTemplateContext() {
+    return _CustomListItemTemplateContext.default.calculate;
+  }
+
+  static get styles() {
+    return [_ListItem.default.styles, _CustomListItemCss.default];
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  CustomListItem.define();
+});
+
+var _default = CustomListItem;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","./ListItem.js":"node_modules/@ui5/webcomponents/dist/ListItem.js","./CustomListItemTemplateContext.js":"node_modules/@ui5/webcomponents/dist/CustomListItemTemplateContext.js","./build/compiled/CustomListItemRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/CustomListItemRenderer.lit.js","./themes/CustomListItem.css.js":"node_modules/@ui5/webcomponents/dist/themes/CustomListItem.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents/dist/Suggestions.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _List = _interopRequireDefault(require("./List.js"));
+
+var _Popover = _interopRequireDefault(require("./Popover.js"));
+
+var _StandardListItem = _interopRequireDefault(require("./StandardListItem.js"));
+
+var _CustomListItem = _interopRequireDefault(require("./CustomListItem.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ensure <ui5-li> is loaded
+// ensure <ui5-li-custom> is loaded
+(function noTreeShaked() {
+  `${_StandardListItem.default}${_CustomListItem.default}`; //eslint-disable-line
+})();
+/**
+ * A class to manage the <code>Input</code suggestion items.
+ *
+ * @class
+ * @private
+ * @author SAP SE
+ */
+
+
+class Suggestions {
+  constructor(component, slotName, handleFocus) {
+    // The component, that the suggestion would plug into.
+    this.component = component; // Defines the items` slot name.
+
+    this.slotName = slotName; // Defines, if the focus will be moved via the arrow keys.
+
+    this.handleFocus = handleFocus; // Press and Focus handlers
+
+    this.fnOnSuggestionItemPress = this.onItemPress.bind(this);
+    this.fnOnSuggestionItemFocus = this.onItemFocused.bind(this); // An integer value to store the currently selected item position,
+    // that changes due to user interaction.
+
+    this.selectedItemIndex = null;
+  }
+  /* Public methods */
+
+
+  onUp(event) {
+    event.preventDefault();
+
+    this._handleItemNavigation(false
+    /* forward */
+    );
+
+    return true;
+  }
+
+  onDown(event) {
+    event.preventDefault();
+
+    this._handleItemNavigation(true
+    /* forward */
+    );
+
+    return true;
+  }
+
+  onSpace(event) {
+    if (this._isItemOnTarget()) {
+      event.preventDefault();
+      this.onItemSelected(null, true
+      /* keyboardUsed */
+      );
+      return true;
+    }
+
+    return false;
+  }
+
+  onEnter(event) {
+    if (this._isItemOnTarget()) {
+      this.onItemSelected(null, true
+      /* keyboardUsed */
+      );
+      return true;
+    }
+
+    return false;
+  }
+
+  toggle(bToggle) {
+    const toggle = bToggle !== undefined ? bToggle : !this.isOpened();
+
+    if (toggle) {
+      this.open();
+    } else {
+      this.close();
+    }
+  }
+
+  open() {
+    this._beforeOpen();
+
+    this._getPopover().openBy(this._getComponent());
+  }
+
+  close() {
+    this._getPopover().close();
+  }
+
+  updateSelectedItemPosition(pos) {
+    this.selectedItemIndex = pos;
+  }
+  /* Interface methods */
+
+
+  onItemFocused() {
+    this._getComponent().onItemFocused();
+  }
+
+  onItemSelected(selectedItem, keyboardUsed) {
+    const item = selectedItem || this._getItems()[this.selectedItemIndex];
+
+    this.selectedItemIndex = this._getItems().indexOf(item);
+
+    this._getComponent().onItemSelected(item, keyboardUsed);
+
+    this.close();
+  }
+
+  onItemPreviewed(item) {
+    this._getComponent().onItemPreviewed(item);
+  }
+  /* Private methods */
+
+
+  onItemPress(oEvent) {
+    this.onItemSelected(oEvent.detail.item, false
+    /* keyboardUsed */
+    );
+  }
+
+  _beforeOpen() {
+    this._attachItemsListeners();
+
+    this._attachPopupListeners();
+  }
+
+  _attachItemsListeners() {
+    const list = this._getList();
+
+    list.removeEventListener("ui5-itemPress", this.fnOnSuggestionItemPress);
+    list.addEventListener("ui5-itemPress", this.fnOnSuggestionItemPress);
+    list.removeEventListener("ui5-itemFocused", this.fnOnSuggestionItemFocus);
+    list.addEventListener("ui5-itemFocused", this.fnOnSuggestionItemFocus);
+  }
+
+  _attachPopupListeners() {
+    if (!this.handleFocus) {
+      return;
+    }
+
+    if (!this.attachedAfterOpened) {
+      this._getPopover().addEventListener("ui5-afterOpen", this._onOpen.bind(this));
+
+      this.attachedAfterOpened = true;
+    }
+
+    if (!this.attachedAfterClose) {
+      this._getPopover().addEventListener("ui5-afterClose", this._onClose.bind(this));
+
+      this.attachedAfterClose = true;
+    }
+  }
+
+  _onOpen() {
+    this._applyFocus();
+
+    this._getComponent().onOpen();
+  }
+
+  _onClose() {
+    this._getComponent().onClose();
+  }
+
+  _applyFocus() {
+    if (this.selectedItemIndex) {
+      this._getItems()[this.selectedItemIndex].focus();
+    }
+  }
+
+  _isItemOnTarget() {
+    return this.isOpened() && this.selectedItemIndex !== null;
+  }
+
+  isOpened() {
+    const popover = this._getPopover();
+
+    return !!(popover && popover._isOpen);
+  }
+
+  _handleItemNavigation(forward) {
+    if (!this._getItems().length) {
+      return;
+    }
+
+    if (forward) {
+      this._selectNextItem();
+    } else {
+      this._selectPreviousItem();
+    }
+  }
+
+  _selectNextItem() {
+    const itemsCount = this._getItems().length;
+
+    const previousSelectedIdx = this.selectedItemIndex;
+
+    if (this.selectedItemIndex === null || ++this.selectedItemIndex > itemsCount - 1) {
+      this.selectedItemIndex = 0;
+    }
+
+    this._moveItemSelection(previousSelectedIdx, this.selectedItemIndex);
+  }
+
+  _selectPreviousItem() {
+    const itemsCount = this._getItems().length;
+
+    const previousSelectedIdx = this.selectedItemIndex;
+
+    if (this.selectedItemIndex === null || --this.selectedItemIndex < 0) {
+      this.selectedItemIndex = itemsCount - 1;
+    }
+
+    this._moveItemSelection(previousSelectedIdx, this.selectedItemIndex);
+  }
+
+  _moveItemSelection(previousIdx, nextIdx) {
+    const items = this._getItems();
+
+    const currentItem = items[nextIdx];
+    const previousItem = items[previousIdx];
+
+    if (previousItem) {
+      previousItem.selected = false;
+    }
+
+    if (currentItem) {
+      currentItem.selected = true;
+
+      if (this.handleFocus) {
+        currentItem.focus();
+      }
+    }
+
+    this.onItemPreviewed(currentItem);
+
+    if (!this._isItemIntoView(currentItem)) {
+      this._scrollItemIntoView(currentItem);
+    }
+  }
+
+  _isItemIntoView(item) {
+    const rectItem = item.getDomRef().getBoundingClientRect();
+
+    const rectInput = this._getComponent().getDomRef().getBoundingClientRect();
+
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    return rectItem.top <= windowHeight && rectItem.top >= rectInput.top;
+  }
+
+  _scrollItemIntoView(item) {
+    const pos = item.getDomRef().offsetTop - Suggestions.SCROLL_STEP;
+    this._getScrollContainer().scrollTop = pos;
+  }
+
+  _getScrollContainer() {
+    if (!this._scrollContainer) {
+      const popover = this._getPopover();
+
+      this._scrollContainer = popover.getDomRef().querySelector(".sapMPopupContent");
+    }
+
+    return this._scrollContainer;
+  }
+
+  _getItems() {
+    return this._getComponent().getSlottedNodes(this.slotName);
+  }
+
+  _getComponent() {
+    return this.component;
+  }
+
+  _getList() {
+    return this._getComponent().shadowRoot.querySelector("ui5-list");
+  }
+
+  _getPopover() {
+    return this._getComponent().shadowRoot.querySelector("ui5-popover");
+  }
+
+}
+
+Suggestions.SCROLL_STEP = 48; // The List and Popover components would be rendered
+// by the issuer component`s template.
+
+_Bootstrap.default.boot().then(() => {
+  _List.default.define();
+
+  _Popover.default.define();
+});
+
+var _default = Suggestions;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","./List.js":"node_modules/@ui5/webcomponents/dist/List.js","./Popover.js":"node_modules/@ui5/webcomponents/dist/Popover.js","./StandardListItem.js":"node_modules/@ui5/webcomponents/dist/StandardListItem.js","./CustomListItem.js":"node_modules/@ui5/webcomponents/dist/CustomListItem.js"}],"node_modules/@ui5/webcomponents/dist/InputSuggestions.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Input = _interopRequireDefault(require("./Input.js"));
+
+var _Suggestions = _interopRequireDefault(require("./Suggestions.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class InputSuggestions {}
+
+_Input.default.getSuggestions = () => _Suggestions.default;
+
+var _default = InputSuggestions;
+exports.default = _default;
+},{"./Input.js":"node_modules/@ui5/webcomponents/dist/Input.js","./Suggestions.js":"node_modules/@ui5/webcomponents/dist/Suggestions.js"}],"node_modules/@ui5/webcomponents/dist/build/compiled/MultiComboBoxRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const MultiComboBoxLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<div class="ui5-multi-combobox--wrapper"><ui5-input id="ui5-multi-combobox--input"		value="${(0, _ifDefined.default)(context.ctr.value)}"		placeholder="${(0, _ifDefined.default)(context.ctr.placeholder)}"		?disabled=${(0, _ifDefined.default)(context.ctr.disabled)}		?readonly=${(0, _ifDefined.default)(context.ctr.readonly)}		value-state="${(0, _ifDefined.default)(context.ctr.valueState)}"		show-suggestions		@ui5-input="${(0, _ifDefined.default)(context.ctr._inputLiveChange)}"		@ui5-change=${(0, _ifDefined.default)(context.ctr._inputChange)}		@keydown="${(0, _ifDefined.default)(context.ctr._keydown)}"><ui5-tokenizer slot="_beginContent"			show-more			class="ui5-multi-combobox-tokenizer"			?disabled="${(0, _ifDefined.default)(context.ctr.disabled)}"			@ui5-showMoreItemsPress="${(0, _ifDefined.default)(context.ctr._showMorePopover)}"			@ui5-tokenDelete="${(0, _ifDefined.default)(context.ctr._tokenDelete)}"			@focusout="${(0, _ifDefined.default)(context.ctr._tokenizerFocusOut)}"		>			${(0, _LitRenderer.repeat)(context.ctr.items, undefined, (item, index) => block1(item, index, context))}</ui5-tokenizer>		${!context.ctr.readonly ? block3(context) : undefined}</ui5-input><ui5-popover 		class="ui5-multi-combobox-selected-items--popover"		horizontal-align="Stretch"		hide-header		?hide-arrow=${(0, _ifDefined.default)(context.editable)}		placement-type="Bottom"><ui5-list separators="None" mode="${(0, _ifDefined.default)(context.selectedItemsListMode)}"			@ui5-selectionChange=${(0, _ifDefined.default)(context.ctr._selectedItemsSelectionChange)}>			${(0, _LitRenderer.repeat)(context.ctr.items, undefined, (item, index) => block4(item, index, context))}</ui5-list></ui5-popover><ui5-popover class="ui5-multi-combobox-all-items--popover"		hide-header		hide-arrow		horizontal-align="Stretch"		initial-focus="ui5-multi-combobox--input"		horizontal-align="Left"		placement-type="Bottom"		@ui5-selectionChange=${(0, _ifDefined.default)(context.ctr._allItemsSelectionChange)}		@ui5-afterClose=${(0, _ifDefined.default)(context.ctr._afterAllPopoverClose)}		@ui5-afterOpen=${(0, _ifDefined.default)(context.ctr._afterAllPopoverOpen)}><ui5-list separators="None" mode="MultiSelect" class="ui5-multi-combobox-all-items-list">			${(0, _LitRenderer.repeat)(context.ctr._filteredItems, undefined, (item, index) => block6(item, index, context))}</ui5-list></ui5-popover></div>`;
+};
+
+const block1 = (item, index, context) => {
+  return _LitRenderer.html`${item.selected ? block2(item, index, context) : undefined}`;
+};
+
+const block2 = (item, index, context) => {
+  return _LitRenderer.html`<ui5-token ?readonly="${(0, _ifDefined.default)(context.ctr.readonly)}" class="ui5-multi-combobox--token" data-ui5-id="${(0, _ifDefined.default)(item._id)}" >${(0, _ifDefined.default)(item.textContent)}</ui5-token>				`;
+};
+
+const block3 = context => {
+  return _LitRenderer.html`<ui5-icon src="sap-icon://slim-arrow-down" 				slot="icon"				@ui5-press=${(0, _ifDefined.default)(context.ctr._showAllItemsPopover)}				class="${(0, _ifDefined.default)(context.classes.icon)}"			></ui5-icon>		`;
+};
+
+const block4 = (item, index, context) => {
+  return _LitRenderer.html`${item.selected ? block5(item, index, context) : undefined}`;
+};
+
+const block5 = (item, index, context) => {
+  return _LitRenderer.html`<ui5-li type="Active" data-ui5-token-id="${(0, _ifDefined.default)(item._id)}" .selected="${(0, _ifDefined.default)(context.editable)}">${(0, _ifDefined.default)(item.textContent)}</ui5-li>				`;
+};
+
+const block6 = (item, index, context) => {
+  return _LitRenderer.html`<ui5-li type="Active" ?selected=${(0, _ifDefined.default)(item.selected)} data-ui5-token-id="${(0, _ifDefined.default)(item._id)}">${(0, _ifDefined.default)(item.textContent)}</ui5-li>			`;
+};
+
+const renderMe = block0;
+MultiComboBoxLitRenderer.render = renderMe;
+var _default = MultiComboBoxLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/build/compiled/TokenizerRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const TokenizerLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<div class="${(0, _ifDefined.default)(context.classes.wrapper)}"><div class="${(0, _ifDefined.default)(context.classes.content)}" @ui5-delete=${(0, _ifDefined.default)(context.ctr._tokenDelete)}><div class="ui5-tokenizer-token-placeholder"><div style="display: inline-block"></div></div>		${(0, _LitRenderer.repeat)(context.ctr.tokens, undefined, (item, index) => block1(item, index, context))}</div>	${context.showNMore ? block2(context) : undefined}</div>`;
+};
+
+const block1 = (item, index, context) => {
+  return _LitRenderer.html`<div class="ui5-tokenizer--token--wrapper"><slot name="${(0, _ifDefined.default)(item._individualSlot)}"></slot></div>		`;
+};
+
+const block2 = context => {
+  return _LitRenderer.html`<span @click="${(0, _ifDefined.default)(context.ctr._openOverflowPopover)}" class="ui5-tokenizer-more-text">${(0, _ifDefined.default)(context.ctr._nMoreText)}</span>	`;
+};
+
+const renderMe = block0;
+TokenizerLitRenderer.render = renderMe;
+var _default = TokenizerLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/themes/Tokenizer.css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = ":host(ui5-tokenizer){display:inline-block;box-sizing:border-box;border:1px solid #000;height:2.25rem}ui5-tokenizer{display:inline-block;box-sizing:border-box;border:1px solid #000;height:2.25rem}span.sapUiSizeCompact .ui5-tokenizer--wrapper{padding:.1875rem .125rem}.ui5-tokenizer--wrapper{height:100%;display:flex;align-items:center;padding:.1875rem;overflow-x:scroll;box-sizing:border-box;font-family:var(--sapUiFontFamily,var(--sapFontFamily,\"72\",\"72full\",Arial,Helvetica,sans-serif))}.ui5-tokenizer-no-padding{padding:0}.ui5-tokenizer--wrapper.ui5-tokenizer-nmore--wrapper{overflow-x:hidden}.ui5-tokenizer--token--wrapper{display:inline-flex;align-items:center;box-sizing:border-box;height:100%}.ui5-tokenizer--content{height:100%}.ui5-tokenizer--content.ui5-tokenizer-nmore--content{overflow:hidden}.ui5-tokenizer-more-text{display:inline-block;margin-left:3px;cursor:pointer;white-space:nowrap;font-size:var(--sapMFontMediumSize,.875rem)}.ui5-tokenizer-token-placeholder{display:inline-block;height:1px;width:1px;margin-top:auto}span[data-sap-ui-wc-root]{display:flex;height:100%;width:100%}";
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/TokenizerTemplateContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+class TokenizerTemplateContext {
+  static calculate(state) {
+    const context = {
+      ctr: state,
+      showNMore: state.showMore && state._hiddenTokens.length,
+      classes: {
+        wrapper: {
+          "ui5-tokenizer-nmore--wrapper": state.showMore,
+          "ui5-tokenizer--wrapper": true,
+          "ui5-tokenizer-no-padding": !state.tokens.length
+        },
+        content: {
+          "ui5-tokenizer--content": true,
+          "ui5-tokenizer-nmore--content": state.showMore
+        }
+      }
+    };
+    return context;
+  }
+
+}
+
+var _default = TokenizerTemplateContext;
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/Tokenizer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _UI5Element = _interopRequireDefault(require("@ui5/webcomponents-base/src/UI5Element.js"));
+
+var _ResizeHandler = _interopRequireDefault(require("@ui5/webcomponents-base/src/delegate/ResizeHandler.js"));
+
+var _ItemNavigation = _interopRequireDefault(require("@ui5/webcomponents-base/src/delegate/ItemNavigation.js"));
+
+var _Function = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/Function.js"));
+
+var _ResourceBundleProvider = require("./ResourceBundleProvider.js");
+
+var _TokenizerRendererLit = _interopRequireDefault(require("./build/compiled/TokenizerRenderer.lit.js"));
+
+var _TokenizerCss = _interopRequireDefault(require("./themes/Tokenizer.css.js"));
+
+require("./ThemePropertiesProvider.js");
+
+var _TokenizerTemplateContext = _interopRequireDefault(require("./TokenizerTemplateContext.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Styles
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-tokenizer",
+  slots:
+  /** @lends sap.ui.webcomponents.main.Tokenizer.prototype */
+  {
+    tokens: {
+      type: HTMLElement,
+      multiple: true,
+      individualSlots: true
+    }
+  },
+  defaultSlot: "tokens",
+  properties:
+  /** @lends sap.ui.webcomponents.main.Tokenizer.prototype */
+  {
+    showMore: {
+      type: Boolean
+    },
+    disabled: {
+      type: Boolean
+    },
+    _nMoreText: {
+      type: String
+    },
+    _openOverflowPopover: {
+      type: _Function.default
+    },
+    _tokenDelete: {
+      type: _Function.default
+    },
+    _hiddenTokens: {
+      type: Object,
+      multiple: true
+    }
+  },
+  events:
+  /** @lends sap.ui.webcomponents.main.Tokenizer.prototype */
+  {
+    tokenDelete: {
+      detail: {
+        ref: {
+          type: HTMLElement
+        }
+      }
+    },
+    showMoreItemsPress: {
+      detail: {
+        ref: {
+          type: HTMLElement
+        }
+      }
+    }
+  }
+};
+/**
+ * @class
+ *
+ * <h3 class="comment-api-title">Overview</h3>
+ *
+ * A container for tokens.
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.Tokenizer
+ * @extends UI5Element
+ * @tagname ui5-tokenizer
+ * @usestextcontent
+ * @private
+ */
+
+class Tokenizer extends _UI5Element.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _TokenizerRendererLit.default;
+  }
+
+  static get calculateTemplateContext() {
+    return _TokenizerTemplateContext.default.calculate;
+  }
+
+  static get styles() {
+    return _TokenizerCss.default;
+  }
+
+  constructor() {
+    super();
+    this._itemsCount = 0;
+    this._lastIndex = 0;
+    this._lastTokenCount = 0;
+    this._recalculateLayouting = false;
+    this._resizeHandler = this._handleResize.bind(this);
+    this._itemNav = new _ItemNavigation.default(this);
+    this._tokenDelete = this._handleTokenDelete.bind(this);
+    this._openOverflowPopover = this._handleOpenOverflowPopover.bind(this);
+
+    this._itemNav.getItemsCallback = () => {
+      if (this.disabled) {
+        return [];
+      }
+
+      return this._getTokens();
+    };
+
+    this._delegates.push(this._itemNav);
+
+    this.resourceBundle = (0, _ResourceBundleProvider.getResourceBundle)("@ui5/webcomponents");
+  }
+
+  onBeforeRendering() {
+    this._itemNav.init();
+
+    if (this._lastTokenCount !== this.tokens.length) {
+      this._recalculateLayouting = true;
+    }
+
+    this._lastTokenCount = this.tokens.length;
+    this._nMoreText = this.resourceBundle.getText("MULTIINPUT_SHOW_MORE_TOKENS", [this._hiddenTokens.length]);
+  }
+
+  onAfterRendering() {
+    if (this._recalculateLayouting) {
+      this._handleResize();
+
+      this._recalculateLayouting = false;
+    }
+  }
+
+  onEnterDOM() {
+    _ResizeHandler.default.register(this.shadowRoot.querySelector(".ui5-tokenizer--content"), this._resizeHandler);
+  }
+
+  onExitDOM() {
+    _ResizeHandler.default.deregister(this.shadowRoot.querySelector(".ui5-tokenizer--content"), this._resizeHandler);
+  }
+
+  _handleOpenOverflowPopover() {
+    this.fireEvent("showMoreItemsPress");
+  }
+
+  _handleResize() {
+    const overflowTokens = this._getTokens(true);
+
+    if (!overflowTokens.length) {
+      this._hiddenTokens = [];
+    }
+
+    this._hiddenTokens = overflowTokens;
+  }
+
+  _getTokens(overflow) {
+    const firstToken = this.shadowRoot.querySelector(".ui5-tokenizer-token-placeholder");
+
+    if (!firstToken) {
+      return [];
+    }
+
+    const firstTokenTop = firstToken.getBoundingClientRect().top;
+    const tokens = [];
+
+    if (firstToken && this.tokens.length) {
+      this.tokens.forEach(token => {
+        const tokenTop = token.getBoundingClientRect().top;
+        const tokenOverflows = overflow && tokenTop > firstTokenTop;
+        const tokenVisible = !overflow && tokenTop <= firstTokenTop;
+        (tokenVisible || tokenOverflows) && tokens.push(token);
+      });
+    }
+
+    return tokens;
+  }
+
+  _handleTokenDelete(event) {
+    if (event.detail && event.detail.backSpace) {
+      this._deleteByBackspace();
+    }
+
+    this._updateAndFocus();
+
+    this.fireEvent("tokenDelete", {
+      ref: event.target
+    });
+  }
+  /* Keyboard handling */
+
+
+  _updateAndFocus() {
+    if (this._getTokens().length) {
+      this._itemNav.update();
+
+      setTimeout(() => {
+        this._itemNav.focusCurrent();
+      }, 0);
+    }
+  }
+
+  _deleteByBackspace() {
+    const newIndex = this._itemNav.currentIndex - 1;
+
+    if (newIndex < 0) {
+      this._itemNav.currentIndex = 0;
+    } else {
+      this._itemNav.currentIndex = newIndex;
+    }
+  }
+
+  static async define(...params) {
+    await (0, _ResourceBundleProvider.fetchResourceBundle)("@ui5/webcomponents");
+    super.define(...params);
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  Tokenizer.define();
+});
+
+var _default = Tokenizer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/delegate/ResizeHandler.js":"node_modules/@ui5/webcomponents-base/src/delegate/ResizeHandler.js","@ui5/webcomponents-base/src/delegate/ItemNavigation.js":"node_modules/@ui5/webcomponents-base/src/delegate/ItemNavigation.js","@ui5/webcomponents-base/src/types/Function.js":"node_modules/@ui5/webcomponents-base/src/types/Function.js","./ResourceBundleProvider.js":"node_modules/@ui5/webcomponents/dist/ResourceBundleProvider.js","./build/compiled/TokenizerRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/TokenizerRenderer.lit.js","./themes/Tokenizer.css.js":"node_modules/@ui5/webcomponents/dist/themes/Tokenizer.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js","./TokenizerTemplateContext.js":"node_modules/@ui5/webcomponents/dist/TokenizerTemplateContext.js"}],"node_modules/@ui5/webcomponents/dist/build/compiled/TokenRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const TokenLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<div tabindex="${(0, _ifDefined.default)(context.ctr._tabIndex)}" @click="${(0, _ifDefined.default)(context.ctr._select)}" @keydown="${(0, _ifDefined.default)(context.ctr._keydown)}" class="ui5-token--wrapper"><span class="ui5-token--text"><slot></slot></span>	${!context.ctr.readonly ? block1(context) : undefined}</div>`;
+};
+
+const block1 = context => {
+  return _LitRenderer.html`<ui5-icon @click="${(0, _ifDefined.default)(context.ctr._delete)}" src="${(0, _ifDefined.default)(context.iconURI)}" class="ui5-token--icon"></ui5-icon>	`;
+};
+
+const renderMe = block0;
+TokenLitRenderer.render = renderMe;
+var _default = TokenLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/themes/Token.css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = ":host(ui5-token){display:inline-block;background:var(--sapUiButtonBackground,var(--sapButton_Background,var(--sapBaseColor,var(--sapPrimary3,#fff))));border-width:1px;border-style:solid;border-color:var(--_ui5_token_border_color,var(--sapUiButtonBackgroundDarken24,#c2c2c2));border-radius:var(--_ui5_token_border_radius,.25rem);color:var(--_ui5_token_text_color,var(--sapUiBaseText,var(--sapTextColor,var(--sapPrimary6,#32363a))));height:1.625rem;box-sizing:border-box}:host(ui5-token[data-ui5-compact-size]){font-size:.75rem;height:1.25rem}:host(ui5-token[data-ui5-compact-size]) .ui5-token--icon{padding:0 .25rem;width:.75rem;height:.75rem}:host(ui5-token:not([readonly]):hover){background:var(--sapUiButtonHoverBackground,var(--sapButton_Hover_Background,#ebf5fe));border-color:var(--_ui5_token_hover_border_color,var(--sapUiButtonHoverBorderColorLighten30,#4ba0f6))}:host(ui5-token[selected]:not([readonly])){color:var(--sapUiToggleButtonPressedTextColor,#fff);background:var(--sapUiToggleButtonPressedBackground,var(--sapUiSelected,var(--sapSelectedColor,var(--sapHighlightColor,#0854a0))));border:1px solid var(--sapUiToggleButtonPressedBorderColor,var(--sapUiToggleButtonPressedBackground,var(--sapUiSelected,var(--sapSelectedColor,var(--sapHighlightColor,#0854a0)))))}:host(ui5-token[selected]:not([readonly]):hover){background:var(--sapUiToggleButtonPressedHoverBackground,#095caf);border:1px solid var(--sapUiToggleButtonPressedHoverBorderColor,var(--sapUiToggleButtonPressedHoverBackground,#095caf))}:host(ui5-token[readonly]){color:var(--sapUiContentForegroundTextColor,var(--sapContent_ForegroundTextColor,#32363a))}:host(ui5-token[readonly]) .ui5-token--wrapper{padding-right:.375rem}:host(ui5-token[selected]) .ui5-token--wrapper:focus{outline:1px dotted var(--sapUiContentContrastFocusColor,var(--sapContent_ContrastFocusColor,#fff))}ui5-token{display:inline-block;background:var(--sapUiButtonBackground,var(--sapButton_Background,var(--sapBaseColor,var(--sapPrimary3,#fff))));border-width:1px;border-style:solid;border-color:var(--_ui5_token_border_color,var(--sapUiButtonBackgroundDarken24,#c2c2c2));border-radius:var(--_ui5_token_border_radius,.25rem);color:var(--_ui5_token_text_color,var(--sapUiBaseText,var(--sapTextColor,var(--sapPrimary6,#32363a))));height:1rem;box-sizing:border-box}ui5-token[data-ui5-compact-size]{font-size:.75rem;height:1.25rem}ui5-token[data-ui5-compact-size] .ui5-token--icon{padding:0 .25rem;width:.75rem;height:.75rem}ui5-token:not([readonly]):hover{background:var(--sapUiButtonHoverBackground,var(--sapButton_Hover_Background,#ebf5fe));border-color:var(--_ui5_token_hover_border_color,var(--sapUiButtonHoverBorderColorLighten30,#4ba0f6))}ui5-token[selected]:not([readonly]){color:var(--sapUiToggleButtonPressedTextColor,#fff);background:var(--sapUiToggleButtonPressedBackground,var(--sapUiSelected,var(--sapSelectedColor,var(--sapHighlightColor,#0854a0))));border:1px solid var(--sapUiToggleButtonPressedBorderColor,var(--sapUiToggleButtonPressedBackground,var(--sapUiSelected,var(--sapSelectedColor,var(--sapHighlightColor,#0854a0)))))}ui5-token[selected]:not([readonly]):hover{background:var(--sapUiToggleButtonPressedHoverBackground,#095caf);border:1px solid var(--sapUiToggleButtonPressedHoverBorderColor,var(--sapUiToggleButtonPressedHoverBackground,#095caf))}ui5-token[readonly]{color:var(--sapUiContentForegroundTextColor,var(--sapContent_ForegroundTextColor,#32363a))}ui5-token[readonly] .ui5-token--wrapper{padding-right:.375rem}ui5-token[selected] .ui5-token--wrapper:focus{outline:1px dotted var(--sapUiContentContrastFocusColor,var(--sapContent_ContrastFocusColor,#fff))}.ui5-token--icon{padding:.25rem .5rem;color:inherit;cursor:pointer;width:1rem;height:1rem;color:var(--_ui5_token_icon_color,var(--sapUiContentIconColor,var(--sapContent_IconColor,var(--sapHighlightColor,#0854a0))))}.ui5-token--wrapper{display:flex;align-items:center;height:100%;width:100%;cursor:default;padding-left:.375rem;padding-top:.25rem;padding-bottom:.25rem;box-sizing:border-box;font-size:var(--sapMFontMediumSize,.875rem);font-family:var(--sapUiFontFamily,var(--sapFontFamily,\"72\",\"72full\",Arial,Helvetica,sans-serif));user-select:none}.ui5-token--wrapper:focus{outline-offset:-2px;outline:1px dotted var(--sapUiContentFocusColor,var(--sapContent_FocusColor,#000))}.ui5-token--text{white-space:nowrap}";
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/Token.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _UI5Element = _interopRequireDefault(require("@ui5/webcomponents-base/src/UI5Element.js"));
+
+var _Configuration = require("@ui5/webcomponents-base/src/Configuration.js");
+
+var _PseudoEvents = require("@ui5/webcomponents-base/src/events/PseudoEvents.js");
+
+var _Function = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/Function.js"));
+
+var _Icon = _interopRequireDefault(require("./Icon.js"));
+
+var _TokenRendererLit = _interopRequireDefault(require("./build/compiled/TokenRenderer.lit.js"));
+
+var _TokenCss = _interopRequireDefault(require("./themes/Token.css.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Styles
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-token",
+  defaultSlot: "text",
+  usesNodeText: true,
+  slots:
+  /** @lends sap.ui.webcomponents.main.Token.prototype */
+  {
+    /**
+     * Defines the text of the <code>ui5-token</code>.
+     * <br><b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+     *
+     * @type {Node[]}
+     * @slot
+     * @public
+     */
+    text: {
+      type: Node,
+      multiple: true
+    }
+  },
+  properties:
+  /** @lends sap.ui.webcomponents.main.Token.prototype */
+  {
+    /**
+     * Defines whether the <code>ui5-token</code> is selected or not.
+     *
+     * @type {boolean}
+     * @public
+     */
+    selected: {
+      type: Boolean
+    },
+
+    /**
+     * Defines whether the <code>ui5-token</code> is read-only.
+     * <br><br>
+     * <b>Note:</b> A read-only <code>ui5-token</code> can not be deleted or selected,
+     * but still provides visual feedback upon user interaction.
+     *
+     * @type {boolean}
+     * @public
+     */
+    readonly: {
+      type: Boolean
+    },
+    _delete: {
+      type: _Function.default
+    },
+    _select: {
+      type: _Function.default
+    },
+    _keydown: {
+      type: _Function.default
+    },
+    _tabIndex: {
+      type: String,
+      defaultValue: "-1"
+    }
+  },
+  events:
+  /** @lends sap.ui.webcomponents.main.Token.prototype */
+  {
+    /**
+     * Fired when the backspace, delete or close icon of the token is pressed
+     *
+     * @event
+     * @param {boolean} backSpace indicates whether token is deleted by backspace key
+     * @param {boolean} delete indicates whether token is deleted by delete key
+     * @public
+     */
+    "delete": {
+      detail: {
+        "backSpace": {
+          type: Boolean
+        },
+        "delete": {
+          type: Boolean
+        }
+      }
+    },
+
+    /**
+     * Fired when the a token is selected by user interaction with mouse, clicking space or enter
+     *
+     * @event
+     * @public
+     */
+    select: {}
+  }
+};
+/**
+ * @class
+ *
+ * <h3 class="comment-api-title">Overview</h3>
+ *
+ * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.Token
+ * @extends UI5Element
+ * @tagname ui5-token
+ * @usestextcontent
+ * @private
+ */
+
+class Token extends _UI5Element.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _TokenRendererLit.default;
+  }
+
+  static get calculateTemplateContext() {
+    return state => {
+      return {
+        ctr: state,
+        iconURI: (0, _Configuration.getTheme)() === "sap_fiori_3" ? "sap-icon://decline" : "sap-icon://sys-cancel"
+      };
+    };
+  }
+
+  static get styles() {
+    return _TokenCss.default;
+  }
+
+  constructor() {
+    super();
+    this._select = this._handleSelect.bind(this);
+    this._delete = this._handleDelete.bind(this);
+    this._keydown = this._handleKeyDown.bind(this);
+  }
+
+  _handleSelect() {
+    this.fireEvent("select", {});
+  }
+
+  _handleDelete() {
+    this.fireEvent("delete");
+  }
+
+  _handleKeyDown(event) {
+    const isBS = (0, _PseudoEvents.isBackSpace)(event);
+    const isD = (0, _PseudoEvents.isDelete)(event);
+
+    if (!this.readonly && (isBS || isD)) {
+      event.preventDefault();
+      this.fireEvent("delete", {
+        backSpace: isBS,
+        "delete": isD
+      });
+    }
+
+    if ((0, _PseudoEvents.isEnter)(event) || (0, _PseudoEvents.isSpace)(event)) {
+      this.fireEvent("select", {});
+    }
+  }
+
+  static async define(...params) {
+    await _Icon.default.define();
+    super.define(...params);
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  Token.define();
+});
+
+var _default = Token;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/Configuration.js":"node_modules/@ui5/webcomponents-base/src/Configuration.js","@ui5/webcomponents-base/src/events/PseudoEvents.js":"node_modules/@ui5/webcomponents-base/src/events/PseudoEvents.js","@ui5/webcomponents-base/src/types/Function.js":"node_modules/@ui5/webcomponents-base/src/types/Function.js","./Icon.js":"node_modules/@ui5/webcomponents/dist/Icon.js","./build/compiled/TokenRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/TokenRenderer.lit.js","./themes/Token.css.js":"node_modules/@ui5/webcomponents/dist/themes/Token.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents/dist/themes/MultiComboBox.css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = ":host(ui5-multi-combobox){display:inline-block;width:100%;--_ui5_popover_content_padding:0}ui5-multi-combobox{display:inline-block;width:100%}.ui5-multi-combobox--wrapper{display:flex;overflow:hidden;width:100%;height:100%}.ui5-multi-combobox--icon{color:var(--sapUiContentIconColor,var(--sapContent_IconColor,var(--sapHighlightColor,#0854a0)));cursor:pointer;outline:none;box-sizing:border-box;width:2.375rem}.ui5-multi-combobox--icon[data-ui5-compact-size]{width:2rem}.ui5-multi-combobox--icon:active{background-color:var(--sapUiButtonLiteActiveBackground,var(--sapUiButtonActiveBackground,var(--sapUiActive,var(--sapActiveColor,var(--sapHighlightColor,#0854a0)))));color:var(--sapUiButtonActiveTextColor,#fff)}.ui5-multi-combobox--icon.ui5-multi-combobox-icon-pressed{background:var(--sapUiToggleButtonPressedBackground,var(--sapUiSelected,var(--sapSelectedColor,var(--sapHighlightColor,#0854a0))));color:var(--sapUiButtonActiveTextColor,#fff)}.ui5-multi-combobox--icon:not(.ui5-multi-combobox-icon-pressed):not(:active):hover{background:var(--sapUiButtonLiteHoverBackground,var(--sapUiButtonHoverBackground,var(--sapButton_Hover_Background,#ebf5fe)))}.ui5-multi-combobox--token{height:80%}span.sapUiSizeCompact .ui5-multi-combobox--token{height:100%}.ui5-multi-combobox-tokenizer{max-width:calc(100% - 3rem - var(--sap_wc_input_icon_min_width, 2.375rem));border:none;width:auto;min-width:0;height:100%}";
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/MultiComboBox.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _UI5Element = _interopRequireDefault(require("@ui5/webcomponents-base/src/UI5Element.js"));
+
+var _ValueState = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/ValueState.js"));
+
+var _Function = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/Function.js"));
+
+var _PseudoEvents = require("@ui5/webcomponents-base/src/events/PseudoEvents.js");
+
+var _MultiComboBoxRendererLit = _interopRequireDefault(require("./build/compiled/MultiComboBoxRenderer.lit.js"));
+
+var _Input = _interopRequireDefault(require("./Input.js"));
+
+var _Tokenizer = _interopRequireDefault(require("./Tokenizer.js"));
+
+var _Token = _interopRequireDefault(require("./Token.js"));
+
+var _Icon = _interopRequireDefault(require("./Icon.js"));
+
+var _Popover = _interopRequireDefault(require("./Popover.js"));
+
+var _List = _interopRequireDefault(require("./List.js"));
+
+var _StandardListItem = _interopRequireDefault(require("./StandardListItem.js"));
+
+var _MultiComboBoxCss = _interopRequireDefault(require("./themes/MultiComboBox.css.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Styles
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-multi-combobox",
+  defaultSlot: "items",
+  slots:
+  /** @lends sap.ui.webcomponents.main.MultiComboBox.prototype */
+  {
+    /**
+     * Defines the <code>ui5-multi-combobox</code> items.
+     * </br></br>
+     * Example: </br>
+     * &lt;ui5-multi-combobox></br>
+     * &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #1&lt;/ui5-li></br>
+     * &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #2&lt;/ui5-li></br>
+     * &lt;/ui5-multi-combobox>
+     * <br> <br>
+     *
+     * @type {HTMLElement[]}
+     * @slot
+     * @public
+     */
+    items: {
+      type: HTMLElement,
+      multiple: true,
+      listenFor: {
+        include: ["*"]
+      }
+    }
+  },
+  properties:
+  /** @lends sap.ui.webcomponents.main.MultiComboBox.prototype */
+  {
+    /**
+     * Defines the value of the <code>ui5-multi-combobox</code>.
+     * <br><br>
+     * <b>Note:</b> The property is updated upon typing.
+     *
+     * @type {string}
+     * @defaultvalue ""
+     * @public
+     */
+    value: {
+      type: String,
+      defaultValue: ""
+    },
+
+    /**
+     * Defines a short hint intended to aid the user with data entry when the
+     * <code>ui5-multi-combobox</code> has no value.
+     * <br><br>
+     * <b>Note:</b> The placeholder is not supported in IE. If the placeholder is provided, it won`t be displayed in IE.
+     * @type {string}
+     * @defaultvalue ""
+     * @public
+     */
+    placeholder: {
+      type: String,
+      defaultValue: ""
+    },
+
+    /**
+     * Defines if the user input will be prevented if no matching item has been found
+     *
+     * @type {boolean}
+     * @defaultvalue false
+     * @public
+     */
+    validateInput: {
+      type: Boolean
+    },
+
+    /**
+     * Defines whether <code>ui5-multi-combobox</code> is in disabled state.
+     * <br><br>
+     * <b>Note:</b> A disabled <code>ui5-multi-combobox</code> is completely uninteractive.
+     *
+     * @type {boolean}
+     * @defaultvalue false
+     * @public
+     */
+    disabled: {
+      type: Boolean
+    },
+
+    /**
+     * Defines the value state of the <code>ui5-multi-combobox</code>.
+     * Available options are: <code>None</code>, <code>Success</code>, <code>Warning</code>, and <code>Error</code>.
+     *
+     * @type {string}
+     * @defaultvalue "None"
+     * @public
+     */
+    valueState: {
+      type: _ValueState.default,
+      defaultValue: _ValueState.default.None
+    },
+
+    /**
+     * Defines whether the <code>ui5-multi-combobox</code> is readonly.
+     * <br><br>
+     * <b>Note:</b> A read-only <code>ui5-multi-combobox</code> is not editable,
+     * but still provides visual feedback upon user interaction.
+     *
+     * @type {boolean}
+     * @defaultvalue false
+     * @public
+     */
+    readonly: {
+      type: Boolean
+    },
+    _showMorePopover: {
+      type: _Function.default
+    },
+    _tokenDelete: {
+      type: _Function.default
+    },
+    _tokenizerFocusOut: {
+      type: _Function.default
+    },
+    _showAllItemsPopover: {
+      type: _Function.default
+    },
+    _allItemsSelectionChange: {
+      type: _Function.default
+    },
+    _selectedItemsSelectionChange: {
+      type: _Function.default
+    },
+    _afterAllPopoverClose: {
+      type: _Function.default
+    },
+    _afterAllPopoverOpen: {
+      type: _Function.default
+    },
+    _keydown: {
+      type: _Function.default
+    },
+    _inputLiveChange: {
+      type: _Function.default
+    },
+    _inputChange: {
+      type: _Function.default
+    },
+    _filteredItems: {
+      type: Object
+    },
+    _iconPressed: {
+      type: Boolean
+    }
+  },
+  events:
+  /** @lends sap.ui.webcomponents.main.MultiComboBox.prototype */
+  {
+    /**
+     * Fired when the input operation has finished by pressing Enter or on focusout.
+     *
+     * @event
+     * @public
+     */
+    change: {},
+
+    /**
+     * Fired when the value of the <code>ui5-multi-combobox</code> changes at each keystroke.
+     *
+     * @event
+     * @public
+     */
+    input: {},
+
+    /**
+     * Fired when selection is changed by user interaction
+     * in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
+     *
+     * @event
+     * @param {Array} items an array of the selected items.
+     * @public
+     */
+    selectionChange: {
+      detail: {
+        items: {
+          type: Array
+        }
+      }
+    }
+  }
+};
+/**
+ * @class
+ *
+ * <h3 class="comment-api-title">Overview</h3>
+ *
+ * The <code>ui5-multi-combobox</code> component provides a list box with items and a text field allowing the user to either type a value directly into the control or choose from the list of existing items.
+ *
+ * A drop-down list for selecting and filtering values.
+ * <h3>Description</h3>
+ * The <code>ui5-multi-combobox</code> component is commonly used to enable users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow of available options.
+ * The select options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+ * <h3>Structure</h3>
+ * The <code>ui5-multi-combobox</code> consists of the following elements:
+ * <ul>
+ * <li> Tokenizer - a list of tokens with selected options.
+ * <li> Input field - displays the selected option/s as token/s. Users can type to filter the list.
+ * <li> Drop-down arrow - expands\collapses the option list.</li>
+ * <li> Option list - the list of available options.</li>
+ * </ul>
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.MultiComboBox
+ * @extends UI5Element
+ * @tagname ui5-multi-combobox
+ * @public
+ * @since 0.11.0
+ */
+
+class MultiComboBox extends _UI5Element.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _MultiComboBoxRendererLit.default;
+  }
+
+  static get calculateTemplateContext() {
+    return state => {
+      return {
+        ctr: state,
+        editable: !state.readonly,
+        selectedItemsListMode: state.readonly ? "None" : "MultiSelect",
+        classes: {
+          icon: {
+            [`ui5-multi-combobox-icon-pressed`]: state._iconPressed,
+            [`ui5-multi-combobox--icon`]: true
+          }
+        }
+      };
+    };
+  }
+
+  static get styles() {
+    return _MultiComboBoxCss.default;
+  }
+
+  constructor() {
+    super();
+    this._filteredItems = [];
+    this._inputLastValue = "";
+    this._deleting = false;
+
+    this._showMorePopover = event => {
+      this._togglePopover(true);
+    };
+
+    this._showAllItemsPopover = event => {
+      this._togglePopover(false);
+    };
+
+    this._allItemsSelectionChange = event => {
+      this._listSelectionChange(event);
+    };
+
+    this._selectedItemsSelectionChange = event => {
+      this._listSelectionChange(event);
+    };
+
+    this._inputLiveChange = this._handleInputLiveChange.bind(this);
+    this._tokenDelete = this._handleTokenDelete.bind(this);
+    this._tokenizerFocusOut = this._handleTokenizerFocusOut.bind(this);
+
+    this._inputChange = () => this.fireEvent("change");
+
+    this._afterAllPopoverClose = () => {
+      this._toggleIcon();
+    };
+
+    this._afterAllPopoverOpen = () => {
+      this._toggleIcon();
+    };
+
+    this._keydown = this._handleKeyDown.bind(this);
+  }
+
+  _handleInputLiveChange(event) {
+    const input = event.target;
+    const value = input.value;
+
+    const filteredItems = this._filterItems(value);
+
+    const oldValueState = this.valueState;
+
+    if (!filteredItems.length && value && this.validateInput) {
+      input.value = this._inputLastValue;
+      input.valueState = "Error";
+      setTimeout(() => {
+        input.valueState = oldValueState;
+      }, 2000);
+      return;
+    }
+
+    this._inputLastValue = input.value;
+    this.value = input.value;
+    this._filteredItems = filteredItems;
+
+    if (filteredItems.length === 0) {
+      this._getPopover().close();
+    } else {
+      this._getPopover().openBy(this);
+    }
+
+    this.fireEvent("input");
+  }
+
+  _handleTokenDelete(event) {
+    const token = event.detail.ref;
+    const deletingItem = this.items.filter(item => item._id === token.getAttribute("data-ui5-id"))[0];
+    deletingItem.selected = false;
+    this._deleting = true;
+    this.fireEvent("selectionChange", {
+      items: this._getSelectedItems()
+    });
+  }
+
+  _handleTokenizerFocusOut() {
+    const tokenizer = this.shadowRoot.querySelector("ui5-tokenizer");
+    const tokensCount = tokenizer.tokens.length - 1;
+    tokenizer.tokens.forEach(token => {
+      token.selected = false;
+    });
+
+    if (tokensCount === 0 && this._deleting) {
+      setTimeout(() => {
+        this.shadowRoot.querySelector("ui5-input").focus();
+      }, 0);
+    }
+
+    this._deleting = false;
+  }
+
+  _handleKeyDown(event) {
+    if ((0, _PseudoEvents.isShow)(event) && !this.readonly && !this.disabled) {
+      this._togglePopover();
+    }
+
+    if ((0, _PseudoEvents.isDown)(event) && this._getPopover()._isOpen && this.items.length) {
+      const list = this.shadowRoot.querySelector(".ui5-multi-combobox-all-items-list");
+      list._itemNavigation.current = 0;
+      list.items[0].focus();
+    }
+  }
+
+  _filterItems(value) {
+    return this.items.filter(item => {
+      return item.textContent && item.textContent.toLowerCase().startsWith(value.toLowerCase());
+    });
+  }
+
+  _toggleIcon() {
+    this._iconPressed = !this._iconPressed;
+  }
+
+  _getSelectedItems() {
+    return this.items.filter(item => item.selected);
+  }
+
+  _listSelectionChange(event) {
+    event.target.items.forEach(item => {
+      this.items.forEach(mcbItem => {
+        if (mcbItem._id === item.getAttribute("data-ui5-token-id")) {
+          mcbItem.selected = item.selected;
+        }
+      });
+    });
+    this.fireEvent("selectionChange", {
+      items: this._getSelectedItems()
+    });
+  }
+
+  _getPopover(isMorePopover) {
+    return this.shadowRoot.querySelector(`.ui5-multi-combobox-${isMorePopover ? "selected" : "all"}-items--popover`);
+  }
+
+  _togglePopover(isMorePopover) {
+    const popover = this._getPopover(isMorePopover);
+
+    const otherPopover = this._getPopover(!isMorePopover);
+
+    if (popover && popover._isOpen) {
+      return popover.close();
+    }
+
+    otherPopover && otherPopover.close();
+    popover && popover.openBy(this);
+  }
+
+  onBeforeRendering() {
+    this._inputLastValue = this.value;
+    const hasSelectedItem = this.items.some(item => item.selected);
+
+    if (!hasSelectedItem) {
+      const morePopover = this.shadowRoot.querySelector(`.ui5-multi-combobox-selected-items--popover`);
+      morePopover && morePopover.close();
+    }
+
+    const input = this.shadowRoot.querySelector("ui5-input");
+
+    if (input && !input.value) {
+      this._filteredItems = this.items;
+    }
+
+    const filteredItems = this._filterItems(this.value);
+
+    this._filteredItems = filteredItems;
+  }
+
+  static async define(...params) {
+    await Promise.all([_Input.default.define(), _Tokenizer.default.define(), _Token.default.define(), _Icon.default.define(), _Popover.default.define(), _List.default.define(), _StandardListItem.default.define()]);
+    super.define(...params);
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  MultiComboBox.define();
+});
+
+var _default = MultiComboBox;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/types/ValueState.js":"node_modules/@ui5/webcomponents-base/src/types/ValueState.js","@ui5/webcomponents-base/src/types/Function.js":"node_modules/@ui5/webcomponents-base/src/types/Function.js","@ui5/webcomponents-base/src/events/PseudoEvents.js":"node_modules/@ui5/webcomponents-base/src/events/PseudoEvents.js","./build/compiled/MultiComboBoxRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/MultiComboBoxRenderer.lit.js","./Input.js":"node_modules/@ui5/webcomponents/dist/Input.js","./Tokenizer.js":"node_modules/@ui5/webcomponents/dist/Tokenizer.js","./Token.js":"node_modules/@ui5/webcomponents/dist/Token.js","./Icon.js":"node_modules/@ui5/webcomponents/dist/Icon.js","./Popover.js":"node_modules/@ui5/webcomponents/dist/Popover.js","./List.js":"node_modules/@ui5/webcomponents/dist/List.js","./StandardListItem.js":"node_modules/@ui5/webcomponents/dist/StandardListItem.js","./themes/MultiComboBox.css.js":"node_modules/@ui5/webcomponents/dist/themes/MultiComboBox.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents-base/src/animations/AnimationQueue.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const tasks = new WeakMap();
+
+class AnimationQueue {
+  static get tasks() {
+    return tasks;
+  }
+
+  static enqueue(element, task) {
+    if (!tasks.has(element)) {
+      tasks.set(element, []);
+    }
+
+    tasks.get(element).push(task);
+  }
+
+  static run(element, task) {
+    if (!tasks.has(element)) {
+      tasks.set(element, []);
+    }
+
+    return task().then(() => {
+      const elementTasks = tasks.get(element);
+
+      if (elementTasks.length > 0) {
+        return AnimationQueue.run(element, elementTasks.shift());
+      }
+
+      tasks.delete(element);
+    });
+  }
+
+  static push(element, task) {
+    const elementTasks = tasks.get(element);
+
+    if (elementTasks) {
+      AnimationQueue.enqueue(element, task);
+    } else {
+      AnimationQueue.run(element, task);
+    }
+  }
+
+}
+
+var _default = AnimationQueue;
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents-base/src/animations/config.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  defaultDuration: 400,
+  element: document.createElement("DIV"),
+  identity: () => {}
+};
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents-base/src/animations/animate.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _AnimationQueue = _interopRequireDefault(require("./AnimationQueue.js"));
+
+var _config = _interopRequireDefault(require("./config.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = ({
+  beforeStart = _config.default.identity,
+  duration = _config.default.defaultDuration,
+  element = _config.default.element,
+  progress: progressCallback = _config.default.identity
+}) => {
+  let start = null;
+  let stopped = false;
+  let animationFrame;
+  let stop;
+  let animate;
+  const promise = new Promise((resolve, reject) => {
+    animate = timestamp => {
+      start = start || timestamp;
+      const timeElapsed = timestamp - start;
+      const remaining = duration - timeElapsed;
+
+      if (timeElapsed <= duration) {
+        const progress = 1 - remaining / duration; // easing formula (currently linear)
+
+        progressCallback(progress);
+        animationFrame = !stopped && requestAnimationFrame(animate);
+      } else {
+        progressCallback(1);
+        resolve();
+      }
+    };
+
+    stop = () => {
+      stopped = true;
+      cancelAnimationFrame(animationFrame);
+      reject(new Error("animation stopped"));
+    };
+  }).catch(oReason => oReason);
+
+  _AnimationQueue.default.push(element, () => {
+    beforeStart();
+    requestAnimationFrame(animate);
+    return new Promise(resolve => {
+      promise.then(() => resolve());
+    });
+  });
+
+  return {
+    promise: () => promise,
+    stop: () => stop
+  };
+};
+
+exports.default = _default;
+},{"./AnimationQueue.js":"node_modules/@ui5/webcomponents-base/src/animations/AnimationQueue.js","./config.js":"node_modules/@ui5/webcomponents-base/src/animations/config.js"}],"node_modules/@ui5/webcomponents-base/src/animations/scroll.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _animate = _interopRequireDefault(require("./animate.js"));
+
+var _config = _interopRequireDefault(require("./config.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = ({
+  element = _config.default.element,
+  duration = _config.default.duration,
+  progress: progressCallback = _config.default.identity,
+  dx = 0,
+  dy = 0
+}) => {
+  let scrollLeft;
+  let scrollTop;
+  return (0, _animate.default)({
+    beforeStart: () => {
+      scrollLeft = element.scrollLeft;
+      scrollTop = element.scrollTop;
+    },
+    duration,
+    element,
+    progress: progress => {
+      progressCallback(progress);
+      element.scrollLeft = scrollLeft + progress * dx; // easing - linear
+
+      element.scrollTop = scrollTop + progress * dy; // easing - linear
+    }
+  });
+};
+
+exports.default = _default;
+},{"./animate.js":"node_modules/@ui5/webcomponents-base/src/animations/animate.js","./config.js":"node_modules/@ui5/webcomponents-base/src/animations/config.js"}],"node_modules/@ui5/webcomponents-base/src/delegate/ScrollEnablement.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _EventProvider = _interopRequireDefault(require("../EventProvider.js"));
+
+var _scroll = _interopRequireDefault(require("../animations/scroll.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const scrollEventName = "scroll";
+
+class ScrollEnablement extends _EventProvider.default {
+  constructor() {
+    super();
+  }
+
+  set scrollContainer(container) {
+    this._container = container;
+  }
+
+  get scrollContainer() {
+    return this._container;
+  }
+
+  scrollTo(left, top) {
+    this._container.scrollLeft = left;
+    this._container.scrollTop = top;
+  }
+
+  move(dx, dy) {
+    return (0, _scroll.default)({
+      element: this._container,
+      dx,
+      dy
+    });
+  }
+
+  getScrollLeft() {
+    return this._container.scrollLeft;
+  }
+
+  getScrollTop() {
+    return this._container.scrollTop;
+  }
+
+  _isTouchInside(touch) {
+    const rect = this._container.getBoundingClientRect();
+
+    const x = touch.clientX;
+    const y = touch.clientY;
+    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+  }
+
+  ontouchstart(event) {
+    const touch = event.touches[0];
+    this._prevDragX = touch.pageX;
+    this._prevDragY = touch.pageY;
+    this._canScroll = this._isTouchInside(touch);
+  }
+
+  ontouchmove(event) {
+    if (!this._canScroll) {
+      return;
+    }
+
+    const container = this._container;
+    const touch = event.touches[0];
+    const dragX = touch.pageX;
+    const dragY = touch.pageY;
+    container.scrollLeft += this._prevDragX - dragX;
+    container.scrollTop += this._prevDragY - dragY;
+    this.fireEvent(scrollEventName, {});
+    this._prevDragX = dragX;
+    this._prevDragY = dragY;
+  }
+
+}
+
+var _default = ScrollEnablement;
+exports.default = _default;
+},{"../EventProvider.js":"node_modules/@ui5/webcomponents-base/src/EventProvider.js","../animations/scroll.js":"node_modules/@ui5/webcomponents-base/src/animations/scroll.js"}],"node_modules/@ui5/webcomponents/dist/types/IconColor.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _DataType = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/DataType.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const IconColors = {
+  /**
+   * Default color (brand color)
+   * @public
+   */
+  Default: "Default",
+
+  /**
+   * Positive color
+   * @public
+   */
+  Positive: "Positive",
+
+  /**
+   * Negative color
+   * @public
+   */
+  Negative: "Negative",
+
+  /**
+   * Critical color
+   * @public
+   */
+  Critical: "Critical",
+
+  /**
+   * Neutral color.
+   * @public
+   */
+  Neutral: "Neutral"
+};
+
+class IconColor extends _DataType.default {
+  static isValid(value) {
+    return !!IconColors[value];
+  }
+
+}
+
+IconColor.generataTypeAcessors(IconColors);
+var _default = IconColor;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/types/DataType.js":"node_modules/@ui5/webcomponents-base/src/types/DataType.js"}],"node_modules/@ui5/webcomponents/dist/TabContainerTemplateContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _IconColor = _interopRequireDefault(require("./types/IconColor.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class TabContainerTemplateContext {
+  static calculate(state) {
+    const context = {
+      ctr: state,
+      classes: {
+        main: {
+          "ui5-tab-container": true
+        },
+        header: {
+          "ui5-tc__header": true,
+          "ui5-tc__header--scrollable": state._scrollable
+        },
+        headerScrollContainer: {
+          "ui-tc__headerScrollContainer": true
+        },
+        headerList: {
+          "ui5-tc__headerList": true
+        },
+        separator: {
+          "ui5-tc__separator": true
+        },
+        headerBackArrow: {
+          "ui5-tc__headerArrow": true,
+          "ui5-tc__headerArrowLeft": true,
+          "ui5-tc__headerArrow--visible": state._scrollableBack
+        },
+        headerForwardArrow: {
+          "ui5-tc__headerArrow": true,
+          "ui5-tc__headerArrowRight": true,
+          "ui5-tc__headerArrow--visible": state._scrollableForward
+        },
+        overflowButton: {
+          "ui-tc__overflowButton": true,
+          "ui-tc__overflowButton--visible": state._scrollable
+        },
+        content: {
+          "ui5-tc__content": true,
+          "ui5-tc__content--collapsed": state.collapsed
+        }
+      },
+      renderItems: [],
+      mixedMode: state.items.some(item => item.icon) && state.items.some(item => item.text)
+    };
+    context.renderItems = context.ctr.items.map((item, index) => {
+      const isSeparator = item.isSeparator();
+
+      if (isSeparator) {
+        return {
+          isSeparator,
+          _tabIndex: item._tabIndex,
+          _id: item._id
+        };
+      }
+
+      return {
+        item,
+        isMixedModeTab: !item.icon && context.mixedMode,
+        isTextOnlyTab: !item.icon && !context.mixedMode,
+        isIconTab: item.icon,
+        position: index + 1,
+        disabled: item.disabled || undefined,
+        selected: item.selected || false,
+        ariaLabelledBy: calculateAriaLabelledBy(item),
+        contentItemClasses: calculateContentItemClasses(item),
+        headerItemClasses: calculateHeaderItemClasses(item, context),
+        headerItemContentClasses: calculateHeaderItemContentClasses(item),
+        headerItemIconClasses: calculateHeaderItemIconClasses(item),
+        headerItemSemanticIconClasses: calculateHeaderItemSemanticIconClasses(item),
+        headerItemTextClasses: calculateHeaderItemTextClasses(item),
+        headerItemAdditionalTextClasses: calculateHeaderItemAdditionalTextClasses(item),
+        overflowItemClasses: calculateOverflowItemClasses(item),
+        overflowItemContentClasses: calculateOverflowItemContentClasses(item),
+        overflowItemState: calculateOverflowItemState(item)
+      };
+    });
+    return context;
+  }
+
+}
+
+const calculateAriaLabelledBy = item => {
+  const labels = [];
+
+  if (item.text) {
+    labels.push(`${item._id}-text`);
+  }
+
+  if (item.additionalText) {
+    labels.push(`${item._id}-additionalText`);
+  }
+
+  if (item.icon) {
+    labels.push(`${item._id}-icon`);
+  }
+
+  return labels.join(" ");
+};
+
+const calculateHeaderItemClasses = (item, context) => {
+  const classes = ["ui5-tc__headerItem"];
+
+  if (item.selected) {
+    classes.push("ui5-tc__headerItem--selected");
+  }
+
+  if (item.disabled) {
+    classes.push("ui5-tc__headerItem--disabled");
+  }
+
+  if (!item.icon && !context.mixedMode) {
+    classes.push("ui5-tc__headerItem--textOnly");
+  }
+
+  if (item.icon) {
+    classes.push("ui5-tc__headerItem--withIcon");
+  }
+
+  if (!item.icon && context.mixedMode) {
+    classes.push("ui5-tc__headerItem--mixedMode");
+  }
+
+  if (item.iconColor !== _IconColor.default.Default) {
+    classes.push(`ui5-tc__headerItem--${item.iconColor.toLowerCase()}`);
+  }
+
+  return classes.join(" ");
+};
+
+const calculateHeaderItemContentClasses = item => {
+  const classes = ["ui5-tc__headerItemContent"];
+  return classes.join(" ");
+};
+
+const calculateHeaderItemIconClasses = item => {
+  const classes = ["ui5-tc-headerItemIcon"];
+  return classes.join(" ");
+};
+
+const calculateHeaderItemSemanticIconClasses = item => {
+  const classes = ["ui5-tc-headerItemSemanticIcon"];
+
+  if (item.iconColor !== _IconColor.default.Default) {
+    classes.push(`ui5-tc-headerItemSemanticIcon--${item.iconColor.toLowerCase()}`);
+  }
+
+  return classes.join(" ");
+};
+
+const calculateHeaderItemTextClasses = item => {
+  const classes = ["ui5-tc__headerItemText"];
+  return classes.join(" ");
+};
+
+const calculateHeaderItemAdditionalTextClasses = item => {
+  const classes = ["ui5-tc__headerItemAdditionalText"];
+  return classes.join(" ");
+};
+
+const calculateOverflowItemClasses = item => {
+  const classes = ["ui5-tc__overflowItem"];
+
+  if (item.iconColor !== _IconColor.default.Default) {
+    classes.push(`ui5-tc__overflowItem--${item.iconColor.toLowerCase()}`);
+  }
+
+  if (item.disabled) {
+    classes.push("ui5-tc__overflowItem--disabled");
+  }
+
+  return classes.join(" ");
+};
+
+const calculateOverflowItemContentClasses = item => {
+  const classes = ["ui5-tc__overflowItemContent"];
+  return classes.join(" ");
+};
+
+const calculateOverflowItemState = item => {
+  return item.disabled ? "Inactive" : "Active";
+};
+
+const calculateContentItemClasses = item => {
+  const classes = ["ui5-tc__contentItem"];
+
+  if (!item.selected) {
+    classes.push(" ui5-tc__contentItem--hidden");
+  }
+
+  return classes.join(" ");
+};
+
+var _default = TabContainerTemplateContext;
+exports.default = _default;
+},{"./types/IconColor.js":"node_modules/@ui5/webcomponents/dist/types/IconColor.js"}],"node_modules/@ui5/webcomponents/dist/build/compiled/TabContainerRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const TabContainerLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<div 	id="${(0, _ifDefined.default)(context.ctr._id)}"	data-sap-ui="${(0, _ifDefined.default)(context.ctr._id)}"	?aria-hidden="${(0, _ifDefined.default)(context.ariaHidden)}" class="${(0, _ifDefined.default)(context.classes.main)}"><div class="${(0, _ifDefined.default)(context.classes.header)}" id="${(0, _ifDefined.default)(context.ctr._id)}-header"><ui5-icon @ui5-press="${(0, _ifDefined.default)(context.ctr._headerBackArrow.click)}" class="${(0, _ifDefined.default)(context.classes.headerBackArrow)}" src="sap-icon://slim-arrow-left" tabindex="-1"></ui5-icon><!-- tab items --><div class="${(0, _ifDefined.default)(context.classes.headerScrollContainer)}" id="${(0, _ifDefined.default)(context.ctr._id)}-headerScrollContainer"><ul role="tablist" class="${(0, _ifDefined.default)(context.classes.headerList)}">				${(0, _LitRenderer.repeat)(context.renderItems, undefined, (item, index) => block1(item, index, context))}</ul></div><ui5-icon @ui5-press="${(0, _ifDefined.default)(context.ctr._headerForwardArrow.click)}" class="${(0, _ifDefined.default)(context.classes.headerForwardArrow)}" src="sap-icon://slim-arrow-right" tabindex="-1"></ui5-icon><!-- overflow button -->		${context.ctr.showOverflow ? block12(context) : undefined}</div><!-- content area --><div class="${(0, _ifDefined.default)(context.classes.content)}">		${(0, _LitRenderer.repeat)(context.renderItems, undefined, (item, index) => block13(item, index, context))}</div><!-- overflow menu --><ui5-popover		id="${(0, _ifDefined.default)(context.ctr._id)}-overflowMenu"		hide-arrow		hide-header		placement-type="Bottom"		horizontal-align="Right"><ui5-list @ui5-itemPress="${(0, _ifDefined.default)(context.ctr._overflowList.click)}">			${(0, _LitRenderer.repeat)(context.renderItems, undefined, (item, index) => block15(item, index, context))}</ui5-list></ui5-popover></div>`;
+};
+
+const block1 = (item, index, context) => {
+  return _LitRenderer.html`${!item.isSeparator ? block2(item, index, context) : undefined}${item.isSeparator ? block11(item, index, context) : undefined}`;
+};
+
+const block2 = (item, index, context) => {
+  return _LitRenderer.html`<li class="${(0, _ifDefined.default)(item.headerItemClasses)}"							id="${(0, _ifDefined.default)(item.item._id)}"							tabindex="${(0, _ifDefined.default)(item.item._tabIndex)}"							@click="${(0, _ifDefined.default)(context.ctr._headerItem.click)}"							@keydown="${(0, _ifDefined.default)(context.ctr._headerItem.keydown)}"							@keyup="${(0, _ifDefined.default)(context.ctr._headerItem.keyup)}"							role="tab"							aria-posinset="${(0, _ifDefined.default)(item.position)}"							aria-setsize="${(0, _ifDefined.default)(context.renderItems.length)}"							aria-controls="ui5-tc-contentItem-${(0, _ifDefined.default)(item.position)}"							aria-selected="${(0, _ifDefined.default)(item.selected)}"							?aria-disabled="${(0, _ifDefined.default)(item.disabled)}"							?disabled="${(0, _ifDefined.default)(item.disabled)}"							aria-labelledby="${(0, _ifDefined.default)(item.ariaLabelledBy)}"						>							${item.isTextOnlyTab ? block3(item, index, context) : undefined}${item.isIconTab ? block5(item, index, context) : undefined}${item.isMixedModeTab ? block8(item, index, context) : undefined}</li>					`;
+};
+
+const block3 = (item, index, context) => {
+  return _LitRenderer.html`<div class="${(0, _ifDefined.default)(item.headerItemContentClasses)}"><span class="${(0, _ifDefined.default)(item.headerItemTextClasses)}" id="${(0, _ifDefined.default)(item.item._id)}-text"><span class="${(0, _ifDefined.default)(item.headerItemSemanticIconClasses)}"></span>			${(0, _ifDefined.default)(item.item.text)}</span>		${item.item.additionalText ? block4(item, index, context) : undefined}</div>`;
+};
+
+const block4 = (item, index, context) => {
+  return _LitRenderer.html`<span class="${(0, _ifDefined.default)(item.headerItemAdditionalTextClasses)}" id="${(0, _ifDefined.default)(item.item._id)}-additionalText">(${(0, _ifDefined.default)(item.item.additionalText)})</span>		`;
+};
+
+const block5 = (item, index, context) => {
+  return _LitRenderer.html`<ui5-icon src="${(0, _ifDefined.default)(item.item.icon)}" class="${(0, _ifDefined.default)(item.headerItemIconClasses)}"></ui5-icon><div class="${(0, _ifDefined.default)(item.headerItemContentClasses)}">		${item.item.additionalText ? block6(item, index, context) : undefined}${item.item.text ? block7(item, index, context) : undefined}</div>`;
+};
+
+const block6 = (item, index, context) => {
+  return _LitRenderer.html`<span class="${(0, _ifDefined.default)(item.headerItemAdditionalTextClasses)}" id="${(0, _ifDefined.default)(item.item._id)}-additionalText">${(0, _ifDefined.default)(item.item.additionalText)}</span>		`;
+};
+
+const block7 = (item, index, context) => {
+  return _LitRenderer.html`<span class="${(0, _ifDefined.default)(item.headerItemTextClasses)}" id="${(0, _ifDefined.default)(item.item._id)}-text"><span class="${(0, _ifDefined.default)(item.headerItemSemanticIconClasses)}"></span>				${(0, _ifDefined.default)(item.item.text)}</span>		`;
+};
+
+const block8 = (item, index, context) => {
+  return _LitRenderer.html`<div class="${(0, _ifDefined.default)(item.headerItemContentClasses)}">		${item.item.additionalText ? block9(item, index, context) : undefined}${item.item.text ? block10(item, index, context) : undefined}</div>`;
+};
+
+const block9 = (item, index, context) => {
+  return _LitRenderer.html`<span class="${(0, _ifDefined.default)(item.headerItemAdditionalTextClasses)}" id="${(0, _ifDefined.default)(item.item._id)}-additionalText">${(0, _ifDefined.default)(item.item.additionalText)}</span>		`;
+};
+
+const block10 = (item, index, context) => {
+  return _LitRenderer.html`<span class="${(0, _ifDefined.default)(item.headerItemTextClasses)}" id="${(0, _ifDefined.default)(item.item._id)}-text"><span class="${(0, _ifDefined.default)(item.headerItemSemanticIconClasses)}"></span>				${(0, _ifDefined.default)(item.item.text)}</span>		`;
+};
+
+const block11 = (item, index, context) => {
+  return _LitRenderer.html`<li id="${(0, _ifDefined.default)(item._id)}" role="separator" class="${(0, _ifDefined.default)(context.classes.separator)}"></li>					`;
+};
+
+const block12 = context => {
+  return _LitRenderer.html`<ui5-button				@ui5-press="${(0, _ifDefined.default)(context.ctr._overflowButton.click)}"				class="${(0, _ifDefined.default)(context.classes.overflowButton)}"				icon="sap-icon://slim-arrow-down"				type="Transparent"			></ui5-button>		`;
+};
+
+const block13 = (item, index, context) => {
+  return _LitRenderer.html`${!item.isSeparator ? block14(item, index, context) : undefined}`;
+};
+
+const block14 = (item, index, context) => {
+  return _LitRenderer.html`<div class="${(0, _ifDefined.default)(item.contentItemClasses)}" id="ui5-tc-contentItem-${(0, _ifDefined.default)(item.position)}"><slot name="${(0, _ifDefined.default)(item.item._individualSlot)}"></slot></div>			`;
+};
+
+const block15 = (item, index, context) => {
+  return _LitRenderer.html`${!item.isSeparator ? block16(item, index, context) : undefined}s			`;
+};
+
+const block16 = (item, index, context) => {
+  return _LitRenderer.html`<ui5-li-custom id="${(0, _ifDefined.default)(item.item._id)}"						class="${(0, _ifDefined.default)(item.overflowItemClasses)}"						type="${(0, _ifDefined.default)(item.overflowItemState)}"						?selected="${(0, _ifDefined.default)(item.selected)}"						?disabled="${(0, _ifDefined.default)(item.disabled)}"					><div class="${(0, _ifDefined.default)(item.overflowItemContentClasses)}">							${item.item.icon ? block17(item, index, context) : undefined}${(0, _ifDefined.default)(item.item.text)}${item.item.additionalText ? block18(item, index, context) : undefined}</div></ui5-li-custom>				`;
+};
+
+const block17 = (item, index, context) => {
+  return _LitRenderer.html`<ui5-icon src="${(0, _ifDefined.default)(item.item.icon)}"></ui5-icon>							`;
+};
+
+const block18 = (item, index, context) => {
+  return _LitRenderer.html`								(${(0, _ifDefined.default)(item.item.additionalText)})							`;
+};
+
+const renderMe = block0;
+TabContainerLitRenderer.render = renderMe;
+var _default = TabContainerLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/TabBase.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _UI5Element = _interopRequireDefault(require("@ui5/webcomponents-base/src/UI5Element.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @public
+ */
+const metadata = {
+  properties:
+  /** @lends sap.ui.webcomponents.main.TabBase.prototype */
+  {},
+  events:
+  /** @lends sap.ui.webcomponents.main.TabBase.prototype */
+  {}
+};
+/**
+ * @class
+ * Represents a base class for all tabs inside a TabContainer.
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.TabBase
+ * @extends sap.ui.webcomponents.base.UI5Element
+ * @public
+ */
+
+class TabBase extends _UI5Element.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  isSeparator() {
+    return false;
+  }
+
+}
+
+var _default = TabBase;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js"}],"node_modules/@ui5/webcomponents/dist/themes/TabContainer.css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = ":host(ui5-tabcontainer){display:inline-block;width:100%}ui5-tabcontainer{width:100%}.ui5-tab-container{font-family:var(--sapUiFontFamily,var(--sapFontFamily,\"72\",\"72full\",Arial,Helvetica,sans-serif));font-size:1rem}.ui5-tc__header{background-color:var(--sapUiObjectHeaderBackground,var(--sapObjectHeader_Background,var(--sapBaseColor,var(--sapPrimary3,#fff))));border-bottom:var(--_ui5_tc_header_border_bottom,.0625rem solid var(--sapUiObjectHeaderBackground,var(--sapObjectHeader_Background,var(--sapBaseColor,var(--sapPrimary3,#fff)))));box-shadow:var(--_ui5_tc_header_box_shadow,var(--sapUiShadowHeader,0 1px .5rem 0 rgba(0,0,0,.05)));display:flex;align-items:center}.ui-tc__headerScrollContainer{box-sizing:border-box;overflow:hidden;flex:1}.ui5-tc__headerList{display:flex;margin:0;padding:0;list-style:none}.ui5-tc__separator{width:0;border-left:2px solid var(--sapUiListBorderColor,var(--sapList_BorderColor,#ededed));margin:.5rem .25rem}.ui5-tc__headerItem{color:var(--_ui5_tc_headerItem_color,var(--sapUiContentLabelColor,var(--sapContent_LabelColor,var(--sapPrimary7,#6a6d70))));cursor:pointer;flex-shrink:0;margin:0 1rem;font-size:var(--sapMFontSmallSize,.75rem);text-shadow:var(--sapUiShadowText,0 0 .125rem var(--sapUiContentContrastShadowColor,var(--sapContent_ContrastShadowColor,#fff)));position:relative;display:inline-flex;align-items:center}.ui5-tc__headerItem:last-child{margin-right:0}.ui5-tc__headerItemContent{pointer-events:none}.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon:after,.ui5-tc__headerItem--selected.ui5-tc__headerItem--mixedMode .ui5-tc__headerItemContent:after,.ui5-tc__headerItem--selected.ui5-tc__headerItem--textOnly .ui5-tc__headerItemContent:after{content:\"\";border-bottom:var(--_ui5_tc_headerItemContent_border_bottom,.188rem solid var(--sapUiSelected,var(--sapSelectedColor,var(--sapHighlightColor,#0854a0))));width:100%;position:absolute;bottom:0;left:0}.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon:after{bottom:-.8rem}.ui5-tc__headerItem--disabled,.ui5-tc__overflowItem--disabled{cursor:default;opacity:.5}.ui5-tc__headerItem:focus,.ui5-tc__separator:focus{outline:none}.ui5-tc__headerItem--mixedMode:focus .ui5-tc__headerItemContent,.ui5-tc__headerItem--textOnly:focus .ui5-tc__headerItemContent,.ui5-tc__headerItem--withIcon:focus .ui5-tc-headerItemIcon{outline:var(--_ui5_tc_headerItem_focus_border,1px dotted var(--sapUiContentFocusColor,var(--sapContent_FocusColor,#000)))}.ui5-tc-headerItemSemanticIcon:before{display:var(--_ui5_tc_headerItemSemanticIcon_display,none);font-family:SAP-icons;font-size:.75rem;margin-right:.25rem;speak:none;-webkit-font-smoothing:antialiased}.ui5-tc-headerItemSemanticIcon--positive:before{content:\"\\e1ab\"}.ui5-tc-headerItemSemanticIcon--negative:before{content:\"\\e1ac\"}.ui5-tc-headerItemSemanticIcon--critical:before{content:\"\\e1ae\"}.ui5-tc__headerItem--mixedMode,.ui5-tc__headerItem--withIcon{margin-top:.75rem;padding-bottom:.75rem}.ui5-tc-headerItemIcon{border:var(--_ui5_tc_headerItemIcon_border,1px solid var(--sapUiHighlight,var(--sapHighlightColor,#0854a0)));color:var(--_ui5_tc_headerItemIcon_color,var(--sapUiHighlight,var(--sapHighlightColor,#0854a0)));text-shadow:var(--sapUiShadowText,0 0 .125rem var(--sapUiContentContrastShadowColor,var(--sapContent_ContrastShadowColor,#fff)));pointer-events:none;border-radius:50%;font-size:1.5rem;margin-right:.25rem;height:3rem;width:3rem;position:relative}.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon{background-color:var(--_ui5_tc_headerItemIcon_selected_background,var(--sapUiHighlight,var(--sapHighlightColor,#0854a0)));color:var(--_ui5_tc_headerItemIcon_selected_color,var(--sapUiGroupContentBackground,var(--sapGroup_ContentBackground,var(--sapBaseColor,var(--sapPrimary3,#fff)))));text-shadow:none}.ui5-tc__headerItem--withIcon .ui5-tc__headerItemAdditionalText+.ui5-tc__headerItemText{display:block;margin-top:.625rem}.ui5-tc__headerItem--textOnly{font-size:var(--sapMFontMediumSize,.875rem);height:3rem;display:flex;align-items:center}.ui5-tc__headerItem--mixedMode .ui5-tc__headerItemAdditionalText,.ui5-tc__headerItem--mixedMode .ui5-tc__headerItemText{display:inline-block;vertical-align:middle}.ui5-tc__headerItem--mixedMode .ui5-tc__headerItemAdditionalText{font-size:1.5rem;margin-right:.5rem}.ui5-tc__headerArrow{align-self:stretch;cursor:pointer;color:var(--sapUiContentIconColor,var(--sapContent_IconColor,var(--sapHighlightColor,#0854a0)));font-size:1rem;padding:0 .4rem;visibility:hidden}.ui5-tc__headerArrow:active,.ui5-tc__headerArrow:hover{color:var(--sapUiHighlight,var(--sapHighlightColor,#0854a0))}.ui5-tc__headerArrow--visible{visibility:visible}.ui-tc__overflowButton{display:none;margin-left:auto;margin-right:.25rem}.ui-tc__overflowButton--visible{display:block}.ui5-tc__overflowItem{color:var(--_ui5_tc_overflowItem_default_color,var(--sapUiHighlight,var(--sapHighlightColor,#0854a0)))}.ui5-tc__overflowItemContent{display:flex;align-items:center;padding:0 .5rem;height:3rem}.ui5-tc__overflowItem ui5-icon{font-size:1.375rem;width:1.375rem;height:1.375rem;padding-right:1rem}.ui5-tc__content{background-color:var(--sapUiGroupContentBackground,var(--sapGroup_ContentBackground,var(--sapBaseColor,var(--sapPrimary3,#fff))));border-bottom:var(--_ui5_tc_content_border_bottom,.0625rem solid var(--sapUiObjectHeaderBorderColor,#d9d9d9));padding:1rem;position:relative}.ui5-tc__content--collapsed{display:none}.ui5-tc--transparent .ui5-tc__content{background-color:transparent}.ui5-tc__contentItem--hidden{display:none}.ui5-tc-headerItemSemanticIcon--positive:before,.ui5-tc__headerItem--positive .ui5-tc-headerItemIcon,.ui5-tc__headerItem--positive.ui5-tc__headerItem--textOnly,.ui5-tc__overflowItem--positive{color:var(--sapUiPositive,var(--sapPositiveColor,#107e3e));border-color:var(--_ui5_tc_headerItem_positive_selected_border_color,var(--sapUiPositive,var(--sapPositiveColor,#107e3e)))}.ui5-tc__headerItem--positive.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon{background-color:var(--_ui5_tc_headerItemIcon_positive_selected_background,var(--sapUiPositive,var(--sapPositiveColor,#107e3e)));color:var(--_ui5_tc_headerItemIcon_semantic_selected_color,var(--sapUiGroupContentBackground,var(--sapGroup_ContentBackground,var(--sapBaseColor,var(--sapPrimary3,#fff)))))}.ui5-tc__headerItem--positive .ui5-tc-headerItemIcon:after,.ui5-tc__headerItem.ui5-tc__headerItem--positive .ui5-tc__headerItemContent:after{border-color:var(--sapUiPositive,var(--sapPositiveColor,#107e3e))}.ui5-tc-headerItemSemanticIcon--negative:before,.ui5-tc__headerItem--negative .ui5-tc-headerItemIcon,.ui5-tc__headerItem--negative.ui5-tc__headerItem--textOnly,.ui5-tc__overflowItem--negative{color:var(--sapUiNegative,var(--sapNegativeColor,#b00));border-color:var(--_ui5_tc_headerItem_negative_selected_border_color,var(--sapUiNegative,var(--sapNegativeColor,#b00)))}.ui5-tc__headerItem--negative.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon{background-color:var(--_ui5_tc_headerItemIcon_negative_selected_background,var(--sapUiNegative,var(--sapNegativeColor,#b00)));color:var(--_ui5_tc_headerItemIcon_semantic_selected_color,var(--sapUiGroupContentBackground,var(--sapGroup_ContentBackground,var(--sapBaseColor,var(--sapPrimary3,#fff)))))}.ui5-tc__headerItem--negative .ui5-tc-headerItemIcon:after,.ui5-tc__headerItem.ui5-tc__headerItem--negative .ui5-tc__headerItemContent:after{border-color:var(--sapUiNegative,var(--sapNegativeColor,#b00))}.ui5-tc-headerItemSemanticIcon--critical:before,.ui5-tc__headerItem--critical .ui5-tc-headerItemIcon,.ui5-tc__headerItem--critical.ui5-tc__headerItem--textOnly,.ui5-tc__overflowItem--critical{color:var(--sapUiCritical,var(--sapCriticalColor,#e9730c));border-color:var(--_ui5_tc_headerItem_critical_selected_border_color,var(--sapUiCritical,var(--sapCriticalColor,#e9730c)))}.ui5-tc__headerItem--critical.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon{background-color:var(--_ui5_tc_headerItemIcon_critical_selected_background,var(--sapUiCritical,var(--sapCriticalColor,#e9730c)));color:var(--_ui5_tc_headerItemIcon_semantic_selected_color,var(--sapUiGroupContentBackground,var(--sapGroup_ContentBackground,var(--sapBaseColor,var(--sapPrimary3,#fff)))))}.ui5-tc__headerItem--critical .ui5-tc-headerItemIcon:after,.ui5-tc__headerItem.ui5-tc__headerItem--critical .ui5-tc__headerItemContent:after{border-color:var(--sapUiCritical,var(--sapCriticalColor,#e9730c))}.ui5-tc__headerItem--neutral .ui5-tc-headerItemIcon,.ui5-tc__headerItem--nutral.ui5-tc__headerItem--textOnly,.ui5-tc__overflowItem--neutral{color:var(--sapUiNeutral,var(--sapNeutralColor,#6a6d70));border-color:var(--_ui5_tc_headerItem_neutral_selected_border_color,var(--sapUiNeutral,var(--sapNeutralColor,#6a6d70)))}.ui5-tc__headerItem--neutral.ui5-tc__headerItem--selected .ui5-tc-headerItemIcon{background-color:var(--_ui5_tc_headerItemIcon_neutral_selected_background,var(--sapUiNeutral,var(--sapNeutralColor,#6a6d70)));color:var(--_ui5_tc_headerItemIcon_semantic_selected_color,var(--sapUiGroupContentBackground,var(--sapGroup_ContentBackground,var(--sapBaseColor,var(--sapPrimary3,#fff)))))}.ui5-tc__headerItem--neutral .ui5-tc-headerItemIcon:after,.ui5-tc__headerItems.ui5-tc__headerItem--neutral .ui5-tc__headerItemContent:after{border-color:var(--sapUiNeutral,var(--sapNeutralColor,#6a6d70))}[dir=rtl] .ui5-tc__headerItem:last-child{margin-left:0}[dir=rtl] .ui5-tc-headerItemSemanticIcon:before{margin-left:.25rem;margin-right:0}[dir=rtl] .ui5-tc-headerItemIcon{margin-left:.25rem;margin-right:0}[dir=rtl] .ui5-tc__headerItem--mixedMode .ui5-tc__headerItemAdditionalText{margin-right:0;margin-left:.5rem}[dir=rtl] .ui-tc__overflowButton{margin-right:auto;margin-left:.25rem}.sapUiSizeCompact .ui5-tc__headerItem--textOnly,.sapUiSizeCompact .ui5-tc__overflowItemContent{height:2rem}.sapUiSizeCompact .ui5-tc__headerItem--textOnly{line-height:1.325rem}.sapUiSizeCompact .ui5-tc-headerItemIcon{font-size:1rem;height:2rem;width:2rem}.sapUiSizeCompact .ui5-tc__headerItem--withIcon .ui5-tc__headerItemAdditionalText+.ui5-tc__headerItemText{margin-top:.3125rem}";
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/TabContainer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _UI5Element = _interopRequireDefault(require("@ui5/webcomponents-base/src/UI5Element.js"));
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _ResizeHandler = _interopRequireDefault(require("@ui5/webcomponents-base/src/delegate/ResizeHandler.js"));
+
+var _ScrollEnablement = _interopRequireDefault(require("@ui5/webcomponents-base/src/delegate/ScrollEnablement.js"));
+
+var _ItemNavigation = _interopRequireDefault(require("@ui5/webcomponents-base/src/delegate/ItemNavigation.js"));
+
+var _PseudoEvents = require("@ui5/webcomponents-base/src/events/PseudoEvents.js");
+
+var _TabContainerTemplateContext = _interopRequireDefault(require("./TabContainerTemplateContext.js"));
+
+var _TabContainerRendererLit = _interopRequireDefault(require("./build/compiled/TabContainerRenderer.lit.js"));
+
+var _Button = _interopRequireDefault(require("./Button.js"));
+
+var _CustomListItem = _interopRequireDefault(require("./CustomListItem.js"));
+
+var _Icon = _interopRequireDefault(require("./Icon.js"));
+
+var _List = _interopRequireDefault(require("./List.js"));
+
+var _Popover = _interopRequireDefault(require("./Popover.js"));
+
+var _TabBase = _interopRequireDefault(require("./TabBase.js"));
+
+var _TabContainerCss = _interopRequireDefault(require("./themes/TabContainer.css.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Styles
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+const SCROLL_STEP = 128;
+/**
+ * @public
+ */
+
+const metadata = {
+  tag: "ui5-tabcontainer",
+  defaultSlot: "items",
+  slots:
+  /** @lends  sap.ui.webcomponents.main.TabContainer.prototype */
+  {
+    /**
+     * Defines the tabs.
+     * <br><b>Note:</b> Only <code>ui5-tab</code> and <code>ui5-tab-separator</code> are allowed.
+     *
+     * @type {TabBase[]}
+     * @public
+     * @slot
+     */
+    items: {
+      type: _TabBase.default,
+      multiple: true,
+      individualSlots: true,
+      listenFor: {
+        include: ["*"]
+      }
+    }
+  },
+  properties:
+  /** @lends  sap.ui.webcomponents.main.TabContainer.prototype */
+  {
+    /**
+     * Determines whether the tabs are in a fixed state that is not
+     * expandable/collapsible by user interaction.
+     *
+     * @type {Boolean}
+     * @defaultvalue false
+     * @public
+     */
+    fixed: {
+      type: Boolean
+    },
+
+    /**
+     * Determines whether the tab content is collapsed.
+     *
+     * @type {Boolean}
+     * @defaultvalue false
+     * @public
+     */
+    collapsed: {
+      type: Boolean
+    },
+
+    /**
+     * Specifies if the overflow select list is displayed.
+     * <br><br>
+     * The overflow select list represents a list, where all tab filters are displayed
+     * so that it's easier for the user to select a specific tab filter.
+     *
+     * @type {Boolean}
+     * @defaultvalue false
+     * @public
+     */
+    showOverflow: {
+      type: Boolean
+    },
+    _headerItem: {
+      type: Object
+    },
+    _overflowButton: {
+      type: Object
+    },
+    _headerBackArrow: {
+      type: Object
+    },
+    _headerForwardArrow: {
+      type: Object
+    },
+    _overflowList: {
+      type: Object
+    },
+    _selectedTab: {
+      type: _TabBase.default,
+      association: true
+    },
+    _scrollable: {
+      type: Boolean
+    },
+    _scrollableBack: {
+      type: Boolean
+    },
+    _scrollableForward: {
+      type: Boolean
+    }
+  },
+  events:
+  /** @lends  sap.ui.webcomponents.main.TabContainer.prototype */
+  {
+    /**
+     * Fired when an item is selected.
+     *
+     * @event
+     * @param {HTMLElement} item The selected <code>item</code>.
+     * @public
+     */
+    itemSelect: {
+      item: {
+        type: HTMLElement
+      }
+    }
+  }
+};
+/**
+ * @class
+ *
+ * <h3 class="comment-api-title">Overview</h3>
+ *
+ * The <code>ui5-tabcontainer</code> represents a collection of tabs with associated content.
+ * Navigation through the tabs changes the content display of the currently active content area.
+ * A tab can be labeled with text only, or icons with text.
+ *
+ * <h3>Structure</h3>
+ *
+ * The <code>ui5-tabcontainer</code> can hold two types of entities:
+ * <ul>
+ * <li><code>ui5-tab</code> - contains all the information on an item (text and icon)</li>
+ * <li><code>ui5-tab-separator</code> - used to separate tabs with a vertical line</li>
+ * </ul>
+ *
+ * <h3>ES6 import</h3>
+ *
+ * <code>import "@ui5/webcomponents/dist/TabContainer";</code>
+ * <br>
+ * <code>import "@ui5/webcomponents/dist/Tab";</code> (for <code>ui5-tab</code>)
+ * <br>
+ * <code>import "@ui5/webcomponents/dist/TabSeparator";</code> (for <code>ui5-tab-separator</code>)
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.TabContainer
+ * @extends sap.ui.webcomponents.base.UI5Element
+ * @appenddocs Tab TabSeparator
+ * @tagname ui5-tabcontainer
+ * @public
+ */
+
+class TabContainer extends _UI5Element.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get styles() {
+    return _TabContainerCss.default;
+  }
+
+  static get renderer() {
+    return _TabContainerRendererLit.default;
+  }
+
+  constructor() {
+    super();
+    this._onHeaderItemSelect = this._onHeaderItemSelect.bind(this);
+    this._onHeaderItemKeyDown = this._onHeaderItemKeyDown.bind(this);
+    this._onHeaderItemKeyUp = this._onHeaderItemKeyUp.bind(this);
+    this._onOverflowListItemSelect = this._onOverflowListItemSelect.bind(this);
+    this._onOverflowButtonClick = this._onOverflowButtonClick.bind(this);
+    this._onHeaderBackArrowClick = this._onHeaderBackArrowClick.bind(this);
+    this._onHeaderForwardArrowClick = this._onHeaderForwardArrowClick.bind(this);
+    this._handleHeaderResize = this._handleHeaderResize.bind(this);
+    this._updateScrolling = this._updateScrolling.bind(this);
+    this._headerItem = {
+      click: this._onHeaderItemSelect,
+      keydown: this._onHeaderItemKeyDown,
+      keyup: this._onHeaderItemKeyUp
+    };
+    this._overflowButton = {
+      click: this._onOverflowButtonClick
+    };
+    this._headerBackArrow = {
+      click: this._onHeaderBackArrowClick
+    };
+    this._headerForwardArrow = {
+      click: this._onHeaderForwardArrowClick
+    };
+    this._overflowList = {
+      click: this._onOverflowListItemSelect
+    }; // Init ScrollEnablement
+
+    this._scrollEnablement = new _ScrollEnablement.default();
+
+    this._scrollEnablement.attachEvent("scroll", this._updateScrolling);
+
+    this._delegates.push(this._scrollEnablement); // Init ItemNavigation
+
+
+    this._initItemNavigation();
+  }
+
+  onBeforeRendering() {
+    const hasSelected = this.items.some(item => item.selected);
+    this.items.forEach(item => {
+      item._getTabContainerHeaderItemCallback = _ => {
+        return this.getDomRef().querySelector(`#${item._id}`);
+      };
+    });
+
+    if (!hasSelected) {
+      this.items[0].selected = true;
+    }
+  }
+
+  onAfterRendering() {
+    this._scrollEnablement.scrollContainer = this._getHeaderScrollContainer();
+
+    this._updateScrolling();
+  }
+
+  onEnterDOM() {
+    _ResizeHandler.default.register(this._getHeader(), this._handleHeaderResize);
+  }
+
+  onExitDOM() {
+    _ResizeHandler.default.deregister(this._getHeader(), this._handleHeaderResize);
+  }
+
+  _onHeaderItemKeyDown(event) {
+    if ((0, _PseudoEvents.isEnter)(event)) {
+      this._onHeaderItemSelect(event);
+    } // Prevent Scrolling
+
+
+    if ((0, _PseudoEvents.isSpace)(event)) {
+      event.preventDefault();
+    }
+  }
+
+  _onHeaderItemKeyUp(event) {
+    if ((0, _PseudoEvents.isSpace)(event)) {
+      this._onHeaderItemSelect(event);
+    }
+  }
+
+  _initItemNavigation() {
+    this._itemNavigation = new _ItemNavigation.default(this);
+
+    this._itemNavigation.getItemsCallback = () => this._getTabs();
+
+    this._delegates.push(this._itemNavigation);
+  }
+
+  _onHeaderItemSelect(event) {
+    if (!event.target.hasAttribute("disabled")) {
+      this._onItemSelect(event.target);
+    }
+  }
+
+  _onOverflowListItemSelect(event) {
+    this._onItemSelect(event.detail.item);
+
+    this._getPopover().close();
+
+    this.shadowRoot.querySelector(`#${event.detail.item.id}`).focus();
+  }
+
+  _onItemSelect(target) {
+    const selectedIndex = findIndex(this.items, item => item._id === target.id);
+    const selectedTabIndex = findIndex(this._getTabs(), item => item._id === target.id);
+    const currentSelectedTab = this.items[selectedIndex]; // update selected items
+
+    this.items.forEach((item, index) => {
+      if (!item.isSeparator()) {
+        const selected = selectedIndex === index;
+        item.selected = selected;
+
+        if (selected) {
+          this._itemNavigation.current = selectedTabIndex;
+        }
+      }
+    }, this); // update collapsed state
+
+    if (!this.fixed) {
+      if (currentSelectedTab === this._selectedTab) {
+        this.collapsed = !this.collapsed;
+      } else {
+        this.collapsed = false;
+      }
+    } // select the tab
+
+
+    this._selectedTab = currentSelectedTab;
+    this.fireEvent("itemSelect", {
+      item: currentSelectedTab
+    });
+  }
+
+  _onOverflowButtonClick(event) {
+    this._getPopover().openBy(event.target);
+  }
+
+  _onHeaderBackArrowClick() {
+    this._scrollEnablement.move(-SCROLL_STEP, 0).promise().then(_ => this._updateScrolling());
+  }
+
+  _onHeaderForwardArrowClick() {
+    this._scrollEnablement.move(SCROLL_STEP, 0).promise().then(_ => this._updateScrolling());
+  }
+
+  _handleHeaderResize() {
+    this._updateScrolling();
+  }
+
+  _updateScrolling() {
+    const headerScrollContainer = this._getHeaderScrollContainer();
+
+    this._scrollable = headerScrollContainer.offsetWidth < headerScrollContainer.scrollWidth;
+    this._scrollableBack = headerScrollContainer.scrollLeft > 0;
+    this._scrollableForward = Math.ceil(headerScrollContainer.scrollLeft) < headerScrollContainer.scrollWidth - headerScrollContainer.offsetWidth;
+  }
+
+  _getHeader() {
+    return this.shadowRoot.querySelector(`#${this._id}-header`);
+  }
+
+  _getTabs() {
+    return this.items.filter(item => !item.isSeparator());
+  }
+
+  _getHeaderScrollContainer() {
+    return this.shadowRoot.querySelector(`#${this._id}-headerScrollContainer`);
+  }
+
+  _getPopover() {
+    return this.shadowRoot.querySelector(`#${this._id}-overflowMenu`);
+  }
+
+  static get calculateTemplateContext() {
+    return _TabContainerTemplateContext.default.calculate;
+  }
+
+  static async define(...params) {
+    await Promise.all([_Button.default.define(), _CustomListItem.default.define(), _Icon.default.define(), _List.default.define(), _Popover.default.define()]);
+    super.define(...params);
+  }
+
+}
+
+const findIndex = (arr, predicate) => {
+  for (let i = 0; i < arr.length; i++) {
+    const result = predicate(arr[i]);
+
+    if (result) {
+      return i;
+    }
+  }
+
+  return -1;
+};
+
+_Bootstrap.default.boot().then(_ => {
+  TabContainer.define();
+});
+
+var _default = TabContainer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/delegate/ResizeHandler.js":"node_modules/@ui5/webcomponents-base/src/delegate/ResizeHandler.js","@ui5/webcomponents-base/src/delegate/ScrollEnablement.js":"node_modules/@ui5/webcomponents-base/src/delegate/ScrollEnablement.js","@ui5/webcomponents-base/src/delegate/ItemNavigation.js":"node_modules/@ui5/webcomponents-base/src/delegate/ItemNavigation.js","@ui5/webcomponents-base/src/events/PseudoEvents.js":"node_modules/@ui5/webcomponents-base/src/events/PseudoEvents.js","./TabContainerTemplateContext.js":"node_modules/@ui5/webcomponents/dist/TabContainerTemplateContext.js","./build/compiled/TabContainerRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/TabContainerRenderer.lit.js","./Button.js":"node_modules/@ui5/webcomponents/dist/Button.js","./CustomListItem.js":"node_modules/@ui5/webcomponents/dist/CustomListItem.js","./Icon.js":"node_modules/@ui5/webcomponents/dist/Icon.js","./List.js":"node_modules/@ui5/webcomponents/dist/List.js","./Popover.js":"node_modules/@ui5/webcomponents/dist/Popover.js","./TabBase.js":"node_modules/@ui5/webcomponents/dist/TabBase.js","./themes/TabContainer.css.js":"node_modules/@ui5/webcomponents/dist/themes/TabContainer.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents/dist/TabTemplateContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+class TabTemplateContext {
+  static calculate(state) {
+    const context = {
+      ctr: state
+    };
+    return context;
+  }
+
+}
+
+var _default = TabTemplateContext;
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/build/compiled/TabRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const TabLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<div 	id="${(0, _ifDefined.default)(context.ctr._id)}"	data-sap-ui="${(0, _ifDefined.default)(context.ctr._id)}"	?aria-hidden="${(0, _ifDefined.default)(context.ariaHidden)}"><slot></slot></div>`;
+};
+
+const renderMe = block0;
+TabLitRenderer.render = renderMe;
+var _default = TabLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/Tab.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _URI = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/URI.js"));
+
+var _Function = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/Function.js"));
+
+var _TabBase = _interopRequireDefault(require("./TabBase.js"));
+
+var _TabTemplateContext = _interopRequireDefault(require("./TabTemplateContext.js"));
+
+var _IconColor = _interopRequireDefault(require("./types/IconColor.js"));
+
+var _Icon = _interopRequireDefault(require("./Icon.js"));
+
+var _TabRendererLit = _interopRequireDefault(require("./build/compiled/TabRenderer.lit.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-tab",
+  defaultSlot: "content",
+  slots:
+  /** @lends sap.ui.webcomponents.main.Tab.prototype */
+  {
+    /**
+     * Defines the tab content.
+     * @type {HTMLElement[]}
+     * @slot
+     * @public
+     */
+    content: {
+      type: HTMLElement,
+      multiple: true
+    }
+  },
+  properties:
+  /** @lends sap.ui.webcomponents.main.Tab.prototype */
+  {
+    /**
+     * The text to be displayed for the item.
+     * @type {string}
+     * @defaultvalue: ""
+     * @public
+     */
+    text: {
+      type: String
+    },
+
+    /**
+     * Enabled items can be selected.
+     * @type {Boolean}
+     * @defaultvalue false
+     * @public
+     */
+    disabled: {
+      type: Boolean,
+      defaultValue: false
+    },
+
+    /**
+     * Represents the "additionalText" text, which is displayed in the tab filter.
+     * @type {string}
+     * @defaultvalue: ""
+     * @public
+     */
+    additionalText: {
+      type: String
+    },
+
+    /**
+     * Specifies the icon to be displayed for the tab filter.
+     * @type {URI}
+     * @public
+     */
+    icon: {
+      type: _URI.default,
+      defaultValue: ""
+    },
+
+    /**
+     * Specifies the icon color.
+     *
+     * If an icon font is used, the color can be chosen from the icon colors
+     * (sap.ui.core.IconColor).
+     * Possible semantic colors are: Neutral, Positive, Critical, Negative.
+     * Instead of the semantic icon color the brand color can be used, this is named Default.
+     * Semantic colors and brand colors should not be mixed up inside one IconTabBar.
+     * @type {IconColor}
+     * @defaultvalue "Default"
+     * @public
+     */
+    iconColor: {
+      type: _IconColor.default,
+      defaultValue: _IconColor.default.Default
+    },
+
+    /**
+     * Specifies if the <code>ui5-tab</code> is selected.
+     *
+     * @type {Boolean}
+     * @defaultvalue false
+     * @public
+     */
+    selected: {
+      type: Boolean,
+      defaultValue: false
+    },
+    _tabIndex: {
+      type: String,
+      defaultValue: "-1"
+    },
+    _getTabContainerHeaderItemCallback: {
+      type: _Function.default
+    }
+  },
+  events:
+  /** @lends sap.ui.webcomponents.main.Tab.prototype */
+  {}
+};
+/**
+ * @class
+ * The <code>ui5-tab</code> represents a selectable item inside a <code>ui5-tabcontainer</code>.
+ * It defines both the item in the tab strip (top part of the <code>ui5-tabcontainer</code>) and the
+ * content that is presented to the user once the tab is selected.
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.Tab
+ * @extends TabBase
+ * @tagname ui5-tab
+ * @public
+ */
+
+class Tab extends _TabBase.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _TabRendererLit.default;
+  }
+
+  static get calculateTemplateContext() {
+    return _TabTemplateContext.default.calculate;
+  }
+
+  static async define(...params) {
+    await _Icon.default.define();
+    super.define(...params);
+  }
+
+  getFocusDomRef() {
+    let focusedDomRef = super.getFocusDomRef();
+
+    if (this._getTabContainerHeaderItemCallback) {
+      focusedDomRef = this._getTabContainerHeaderItemCallback();
+    }
+
+    return focusedDomRef;
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  Tab.define();
+});
+
+var _default = Tab;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","@ui5/webcomponents-base/src/types/URI.js":"node_modules/@ui5/webcomponents-base/src/types/URI.js","@ui5/webcomponents-base/src/types/Function.js":"node_modules/@ui5/webcomponents-base/src/types/Function.js","./TabBase.js":"node_modules/@ui5/webcomponents/dist/TabBase.js","./TabTemplateContext.js":"node_modules/@ui5/webcomponents/dist/TabTemplateContext.js","./types/IconColor.js":"node_modules/@ui5/webcomponents/dist/types/IconColor.js","./Icon.js":"node_modules/@ui5/webcomponents/dist/Icon.js","./build/compiled/TabRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/TabRenderer.lit.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents/dist/TabSeparatorTemplateContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+class TabSeparatorTemplateContext {
+  static calculate(state) {
+    const context = {
+      ctr: state,
+      classes: {
+        main: {}
+      }
+    };
+    return context;
+  }
+
+}
+
+var _default = TabSeparatorTemplateContext;
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/build/compiled/TabSeparatorRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const TabSeparatorLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<li 	id="${(0, _ifDefined.default)(context.ctr._id)}"	data-sap-ui="${(0, _ifDefined.default)(context.ctr._id)}"	?aria-hidden="${(0, _ifDefined.default)(context.ariaHidden)}" role="separator"></li>`;
+};
+
+const renderMe = block0;
+TabSeparatorLitRenderer.render = renderMe;
+var _default = TabSeparatorLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/TabSeparator.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _TabSeparatorTemplateContext = _interopRequireDefault(require("./TabSeparatorTemplateContext.js"));
+
+var _TabBase = _interopRequireDefault(require("./TabBase.js"));
+
+var _TabSeparatorRendererLit = _interopRequireDefault(require("./build/compiled/TabSeparatorRenderer.lit.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-tab-separator",
+  properties:
+  /** @lends sap.ui.webcomponents.main.TabSeparator.prototype */
+  {},
+  events:
+  /** @lends sap.ui.webcomponents.main.TabSeparator.prototype */
+  {}
+};
+/**
+ * @class
+ * The <code>ui5-tab-separator</code> represents a vertical line to separate tabs inside a <code>ui5-tabcontainer</code>.
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.TabSeparator
+ * @extends TabBase
+ * @tagname ui5-tab-separator
+ * @public
+ */
+
+class TabSeparator extends _TabBase.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _TabSeparatorRendererLit.default;
+  }
+
+  static get calculateTemplateContext() {
+    return _TabSeparatorTemplateContext.default.calculate;
+  }
+
+  isSeparator() {
+    return true;
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  TabSeparator.define();
+});
+
+var _default = TabSeparator;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","./TabSeparatorTemplateContext.js":"node_modules/@ui5/webcomponents/dist/TabSeparatorTemplateContext.js","./TabBase.js":"node_modules/@ui5/webcomponents/dist/TabBase.js","./build/compiled/TabSeparatorRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/TabSeparatorRenderer.lit.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"node_modules/@ui5/webcomponents/dist/types/TitleLevel.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _DataType = _interopRequireDefault(require("@ui5/webcomponents-base/src/types/DataType.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const TitleLevels = {
+  H1: "H1",
+  H2: "H2",
+  H3: "H3",
+  H4: "H4",
+  H5: "H5",
+  H6: "H6"
+};
+
+class TitleLevel extends _DataType.default {
+  static isValid(value) {
+    return !!TitleLevels[value];
+  }
+
+}
+
+TitleLevel.generataTypeAcessors(TitleLevels);
+var _default = TitleLevel;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/types/DataType.js":"node_modules/@ui5/webcomponents-base/src/types/DataType.js"}],"node_modules/@ui5/webcomponents/dist/build/compiled/TitleRenderer.lit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ifDefined = _interopRequireDefault(require("@ui5/webcomponents-base/src/renderer/ifDefined.js"));
+
+var _LitRenderer = require("@ui5/webcomponents-base/src/renderer/LitRenderer.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint no-unused-vars: 0 */
+const TitleLitRenderer = {};
+
+const block0 = context => {
+  return _LitRenderer.html`<h2		id="${(0, _ifDefined.default)(context.ctr._id)}"	data-sap-ui="${(0, _ifDefined.default)(context.ctr._id)}"	?aria-hidden="${(0, _ifDefined.default)(context.ariaHidden)}"	class="${(0, _ifDefined.default)(context.classes.main)}"	style="${(0, _ifDefined.default)(context.styles.main)}"	role="heading"><span id="${(0, _ifDefined.default)(context.ctr._id)}-inner"><slot></slot></span></h2>`;
+};
+
+const renderMe = block0;
+TitleLitRenderer.render = renderMe;
+var _default = TitleLitRenderer;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/renderer/ifDefined.js":"node_modules/@ui5/webcomponents-base/src/renderer/ifDefined.js","@ui5/webcomponents-base/src/renderer/LitRenderer.js":"node_modules/@ui5/webcomponents-base/src/renderer/LitRenderer.js"}],"node_modules/@ui5/webcomponents/dist/themes/Title.css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = ":host(ui5-title){display:inline-block;max-width:100%;color:var(--sapUiGroupTitleTextColor,var(--sapGroup_TitleTextColor,#32363a));vertical-align:bottom}ui5-title{display:inline-block;overflow:hidden;color:var(--sapUiGroupTitleTextColor,var(--sapGroup_TitleTextColor,#32363a));max-width:100%;vertical-align:bottom}.sapMTitle{display:inline-block;position:relative;font-weight:var(--sapUiFontHeaderWeight,normal);font-family:var(--sapUiFontHeaderFamily,var(--sapUiFontFamily,var(--sapFontFamily,\"72\",\"72full\",Arial,Helvetica,sans-serif)));text-shadow:var(--sapUiShadowText,0 0 .125rem var(--sapUiContentContrastShadowColor,var(--sapContent_ContrastShadowColor,#fff)));box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;vertical-align:bottom;-webkit-margin-before:0;-webkit-margin-after:0;-webkit-margin-start:0;-webkit-margin-end:0;margin:0;cursor:text}.sapMTitle.sapMTitleWrap{white-space:pre-line}.sapMTitleStyleH1{font-size:var(--sapMFontHeader1Size,2.25rem)}.sapMTitleStyleH2{font-size:var(--sapMFontHeader2Size,1.5rem)}.sapMTitleStyleH3{font-size:var(--sapMFontHeader3Size,1.25rem)}.sapMTitleStyleH4{font-size:var(--sapMFontHeader4Size,1.125rem)}.sapMTitleStyleH5{font-size:var(--sapMFontHeader5Size,1rem)}.sapMTitleStyleH6{font-size:var(--sapMFontHeader6Size,.875rem)}";
+exports.default = _default;
+},{}],"node_modules/@ui5/webcomponents/dist/Title.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _UI5Element = _interopRequireDefault(require("@ui5/webcomponents-base/src/UI5Element.js"));
+
+var _Bootstrap = _interopRequireDefault(require("@ui5/webcomponents-base/src/Bootstrap.js"));
+
+var _TitleLevel = _interopRequireDefault(require("./types/TitleLevel.js"));
+
+var _TitleRendererLit = _interopRequireDefault(require("./build/compiled/TitleRenderer.lit.js"));
+
+var _TitleCss = _interopRequireDefault(require("./themes/Title.css.js"));
+
+require("./ThemePropertiesProvider.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Styles
+// Styles
+// all themes should work via the convenience import (inlined now, switch to json when elements can be imported individyally)
+
+/**
+ * @public
+ */
+const metadata = {
+  tag: "ui5-title",
+  properties:
+  /** @lends sap.ui.webcomponents.main.Title.prototype */
+  {
+    /**
+     * Determines whether the <code>ui5-title</code> should wrap.
+     *
+     * @type {Boolean}
+     * @defaultvalue false
+     * @public
+    */
+    wrap: {
+      type: Boolean
+    },
+
+    /**
+     * Defines the title level.
+     * Supported values are from <code>H5</code> to <code>H1</code>.
+     *
+     * @type {string}
+     * @defaultvalue: "H2"
+     * @public
+    */
+    level: {
+      type: _TitleLevel.default,
+      defaultValue: _TitleLevel.default.H2
+    }
+  },
+  slots:
+  /** @lends sap.ui.webcomponents.main.Title.prototype */
+  {
+    /**
+     * Defines the text of the <code>ui5-title</code>.
+     * <br><b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+     *
+     * @type {Node[]}
+     * @slot
+     * @public
+     */
+    text: {
+      type: Node,
+      multiple: true
+    }
+  },
+  defaultSlot: "text"
+};
+/**
+ * @class
+ *
+ * <h3 class="comment-api-title">Overview</h3>
+ *
+ * The <code>ui5-title</code> component is used to display titles inside a page.
+ * It is a simple, large-sized text with explicit header/title semantics.
+ *
+ * <h3>ES6 Module Import</h3>
+ *
+ * <code>import "@ui5/webcomponents/dist/Title";</code>
+ *
+ * @constructor
+ * @author SAP SE
+ * @alias sap.ui.webcomponents.main.Title
+ * @extends sap.ui.webcomponents.base.UI5Element
+ * @tagname ui5-title
+ * @public
+ */
+
+class Title extends _UI5Element.default {
+  static get metadata() {
+    return metadata;
+  }
+
+  static get renderer() {
+    return _TitleRendererLit.default;
+  }
+
+  static get styles() {
+    return _TitleCss.default;
+  }
+
+  static calculateTemplateContext(state) {
+    const context = {
+      tag: (state.level === _TitleLevel.default.Auto ? "div" : state.level).toLowerCase(),
+      ctr: state,
+      classes: {
+        main: {
+          sapMTitle: true,
+          sapMTitleWrap: state.wrap,
+          sapUiSelectable: true,
+          [`sapMTitleStyle${state.level}`]: true
+        }
+      },
+      styles: {
+        main: {}
+      }
+    };
+    return context;
+  }
+
+}
+
+_Bootstrap.default.boot().then(_ => {
+  Title.define();
+});
+
+var _default = Title;
+exports.default = _default;
+},{"@ui5/webcomponents-base/src/UI5Element.js":"node_modules/@ui5/webcomponents-base/src/UI5Element.js","@ui5/webcomponents-base/src/Bootstrap.js":"node_modules/@ui5/webcomponents-base/src/Bootstrap.js","./types/TitleLevel.js":"node_modules/@ui5/webcomponents/dist/types/TitleLevel.js","./build/compiled/TitleRenderer.lit.js":"node_modules/@ui5/webcomponents/dist/build/compiled/TitleRenderer.lit.js","./themes/Title.css.js":"node_modules/@ui5/webcomponents/dist/themes/Title.css.js","./ThemePropertiesProvider.js":"node_modules/@ui5/webcomponents/dist/ThemePropertiesProvider.js"}],"script.js":[function(require,module,exports) {
 "use strict";
 
 require("@ui5/webcomponents/dist/Button");
@@ -24258,7 +27509,25 @@ require("@ui5/webcomponents/dist/TextArea");
 require("@ui5/webcomponents/dist/DatePicker");
 
 require("@ui5/webcomponents/dist/ShellBar");
-},{"@ui5/webcomponents/dist/Button":"node_modules/@ui5/webcomponents/dist/Button.js","@ui5/webcomponents/dist/TextArea":"node_modules/@ui5/webcomponents/dist/TextArea.js","@ui5/webcomponents/dist/DatePicker":"node_modules/@ui5/webcomponents/dist/DatePicker.js","@ui5/webcomponents/dist/ShellBar":"node_modules/@ui5/webcomponents/dist/ShellBar.js"}],"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+require("@ui5/webcomponents/dist/Input");
+
+require("@ui5/webcomponents/dist/InputSuggestions");
+
+require("@ui5/webcomponents/dist/List");
+
+require("@ui5/webcomponents/dist/StandardListItem");
+
+require("@ui5/webcomponents/dist/MultiComboBox");
+
+require("@ui5/webcomponents/dist/TabContainer");
+
+require("@ui5/webcomponents/dist/Tab");
+
+require("@ui5/webcomponents/dist/TabSeparator");
+
+require("@ui5/webcomponents/dist/Title");
+},{"@ui5/webcomponents/dist/Button":"node_modules/@ui5/webcomponents/dist/Button.js","@ui5/webcomponents/dist/TextArea":"node_modules/@ui5/webcomponents/dist/TextArea.js","@ui5/webcomponents/dist/DatePicker":"node_modules/@ui5/webcomponents/dist/DatePicker.js","@ui5/webcomponents/dist/ShellBar":"node_modules/@ui5/webcomponents/dist/ShellBar.js","@ui5/webcomponents/dist/Input":"node_modules/@ui5/webcomponents/dist/Input.js","@ui5/webcomponents/dist/InputSuggestions":"node_modules/@ui5/webcomponents/dist/InputSuggestions.js","@ui5/webcomponents/dist/List":"node_modules/@ui5/webcomponents/dist/List.js","@ui5/webcomponents/dist/StandardListItem":"node_modules/@ui5/webcomponents/dist/StandardListItem.js","@ui5/webcomponents/dist/MultiComboBox":"node_modules/@ui5/webcomponents/dist/MultiComboBox.js","@ui5/webcomponents/dist/TabContainer":"node_modules/@ui5/webcomponents/dist/TabContainer.js","@ui5/webcomponents/dist/Tab":"node_modules/@ui5/webcomponents/dist/Tab.js","@ui5/webcomponents/dist/TabSeparator":"node_modules/@ui5/webcomponents/dist/TabSeparator.js","@ui5/webcomponents/dist/Title":"node_modules/@ui5/webcomponents/dist/Title.js"}],"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
